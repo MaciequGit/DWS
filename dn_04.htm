@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>DuoNawrotna</span></div><br>
+            <div id="linkiRejonu">
+                <a href="dn_00.htm" class="menuitem">Rejon</a>
+                <a href="dn_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="dn_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="dn_03.htm" class="menuitem">Instrukcja obsługi ST1.1</a>
+                <a href="dn_04.htm" class="menuitem mFocus">Czujniki</a>
+				<a href="dn_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-05-13</div>
+            <a id="L0"></a></a>
+            <h1>CZUJNIKI</h1>
+            <br>
+            <ol class="instrukcjaspis">
+                <li><a href="#L1">Impulsatory</a></li>
+                <li><a href="#L2">Czujniki temperatury silników DC</a></li>
+                <li><a href="#L3">Drogówki</a>
+                <li><a href="#L4">Fotokomórki</a></li>
+            </ol>
+            <br>
+            <hr>
+            <ol class="instrukcjapkt">
+                <li><a id="L1"></a>Impulsatory</a><a href="#L0"><img style="float:right;" src="img/return.png"></a>
+                </li><br>
+                <table>
+                    <tr>
+                        <td> Liniał 1.08</td>
+                        <td> Enkoder Inkrementalny (AquadB) Kubler Sendix 8.5000 500imp. </td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td> Liniał 1.10</td>
+                        <td> Enkoder Inkrementalny (AquadB) Kubler Sendix 8.5000 500imp. </td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td> Klatka DN 1.20</td>
+                        <td> Enkoder Inkrementalny (AquadB) Delta GOC 200imp. </td>
+                    </tr>
+                    <tr>
+                        <td> Śruba 1.22</td>
+                        <td> Enkoder Inkrementalny (AquadB) Delta GOC 200imp. </td>
+                    </tr>
+                    <tr>
+                </table><br>
+                <hr>
+                <li><a id="L2"></a>Czujniki temperatury silników DC</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a></li>
+                <p>Dokonywany jest pomiar analowy czetech temperatur:</p>
+                <ul>
+                    <li>Silnik liniału</li>
+                    <li>Silnik samotoku 1.04</li>
+                    <li>Silnik śruby</li>
+                    <li>Temperatura powietrza za wentylatorem w tunelu kablowym</li>
+                </ul>
+                <p>Do pomiaru wykorzystujemy czujniki typu TC (TTJGE-3-2-SO-M10x1-1,5m [-40...400C]) i przetworniki
+                    LUETZE 750847. Prądowy sygnał wyjściowy (4..20mA) jest odczytywany w slavie3 w szafie 1AC2. Stąd są
+                    one również zasilane (24VDC).</p>
+                <hr>
+                <li><a id="L3"></a>Drogówki</a><a href="#L0"><img style="float:right;" src="img/return.png"></a></li>
+                <p>Sygnały drogówek doprowadzone są do slave'a 3 w szafie 1AC2.</p>
+
+                <img class="foto" src="img/dn_i12.png">
+                <div style="text-align:  center;">Rys.1 Drogówka liniałów</div><br>
+                <img class="foto" src="img/dn_i13.png">
+                <div style="text-align:  center;">Rys.2 Drogówka śruby</div><br>
+                <hr>
+                <li><a id="L4"></a>Fotokomórki</a><a href="#L0"><img style="float:right;" src="img/return.png"></a></li>
+
+                <p>W rejonie nawrotnej wykorzystujemy fotokomórki firmy delta. Fz3, Fz4 oraz Fz0.48(zbijacz) to duże
+                    fotki typu DC 1020 A zasilane 230VAC z szafy CEA. Pozostałe to nowsze i mniejsze fotki typu
+                    DC4000-L. Są zasilane z szafy 1AC2 napięciem 24VDC.</p>
+            </ol>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

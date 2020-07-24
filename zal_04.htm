@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>Załadunek</span></div><br>
+            <div id="linkiRejonu">
+                <a href="zal_00.htm" class="menuitem">Rejon</a>
+                <a href="zal_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="zal_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="zal_03.htm" class="menuitem">Instrukcja obsługi ST0.3</a>
+                <a href="zal_04.htm" class="menuitem mFocus">Czujniki</a>
+                <a href="zal_05.htm" class="menuitem">Obsługa URE</a>
+				<a href="zal_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-05-13</div>
+            <a id="L0"></a></a>
+            <h1>CZUJNIKI</h1>
+            <br>
+            <ol class="instrukcjaspis">
+                <li><a href="#L1">Czujniki obecności kęsa na samotoku</a></li>
+                <li><a href="#L2">Czujniki położenia kęsa bliskiego zasięgu</a></li>
+                <li><a href="#L3">Czujniki położenia kęsa dalekiego zasięgu</a>
+                <li><a href="#L4">Enkoder pozycji rusztu</a></li>
+                <li><a href="#L5">Skanery położenia kęsa przed piecami</a></li>
+            </ol>
+            <br>
+            <hr>
+            <ol class="instrukcjapkt">
+                <li><a id="L1"></a>Czujniki obecności kęsa na samotoku</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a>
+                </li>
+                <p>Na samotokach zastosowano czujniki laserowe lub optyczne z lusterkiem zamontowanym z drugiej strony
+                    samotoku. Posiadają jedynie wyjście cyfrowe określające obecność materiału w danej części samotoku.
+                </p>
+                <hr>
+                <li><a id="L2"></a>Czujniki położenia kęsa bliskiego zasięgu</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a>
+                    <img class="foto" src="img/sick_dx.png" style="float:right; margin:0px 100px;  height:150px;">
+                </li>
+                <p>Są to czujniki SICK DT35 z wyjściem analogowym 4..20mA odpowiednio L11,L13,L14 dla rusztu 1
+                    oraz L21,L23,L24 dla rusztu 2. Odległości: minimalna (dla 4mA) oraz maksymalna (dla 20mA)
+                    są programowane.</p>
+                <p>
+                    <x>Obecnie czujniki L13, L14, L23 i L24 mają zasięg 190cm, a L11 i L21 mają zasięg 400cm.</x>
+                </p>
+                <hr>
+                <li><a id="L3"></a>Czujniki położenia kęsa dalekiego zasięgu</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a>
+                    <img class="foto" src="img/delta1.png" style="float:right; margin:10px 80px;  height:150px;">
+                </li>
+                <p>Przy wózku numer 1 (na obu rusztach) jest zainstalowany czujnik laserowy DELTA FT-1602 dalekiego
+                    zasięgu.
+                    Jest on podłączony do sieci Profibus DP i posiada przypisany adres. <x>Dlatego nie można zamieniać
+                        czujników między rusztami.</x> W razie awarii należy instalować czujnik zapasowy który jest na
+                    B2 i postępować według poniższej instrukcji:</p>
+
+                <h3>Instrukcja konfiguracji dalmierza laserowego Delta FT1602
+                    do pracy w rejonie załadunku.</h3>
+                <p>Urządzenie pracuje w sieci ProfibusDP i przed fizycznym podłączeniem wymaga ustawienia właściwego
+                    adresu . Aktualnie zapas jest skonfigurowany do pracy na ruszcie numer 1 (w tym wypadku nie wymaga
+                    programowania). Jeśli zachodzi konieczność montażu dalmierza na ruszcie numer 2 należy:</p>
+                <ol style="text-align:left;">
+                    <li>Podłączyć wtyk zasilający (wtyk/wtyki profibusowe odłączone) 24VDC</li>
+                    <li>Odkręcić klapkę pod wyświetlaczem jak na rysunku:<br>
+                        <img class="foto" src="img/ft1602.png">
+                    </li>
+                    <li>Na przełączniku obrotowym (1) ustawić Addr. Na wyświetlaczu na 1sekundę wyświetli się „Add”,
+                        następnie 3-cyfrowy adres urządzenia.</li>
+                    <li>Przełącznikiem kołyskowym (2) ustawić adres dla RUSZTU 2 - 027 (domyślnie ustawiony jest adres
+                        026 odpowiedni na RUSZT 1).</li>
+                    <li> Na przełączniku obrotowym (1) ustawić Pr. Odłączyć zasilanie. </li>
+                    <li>Wskazane jest powtórzenie kroków 1,2,3 aby sprawdzić czy właściwy adres został zapamiętany.
+                        Jeśli tak Przełącznik (1) ponownie ustawić na Pr. </li>
+                    <li>Odłączyć zasilanie , podłączyć wtyk/wtyki profibusowe , podłączyć zasilanie.</li>
+                    <li>Zasunąć i przykręcić klapkę.</li>
+                </ol>
+                <h2 class="x">UWAGA:<br><br>
+                    PAMIĘTAJ BY PRZEŁOŻYĆ TEMINATOR DO NOWEGO LASERA !!!<br><br>
+                    NIE ZOSTAW ROZPIĘTEJ SIECI PROFIBUS !!!<br><br>
+                    NIE ZAMIENIAĆ LASERÓW MIĘDZY RUSZTAMI BEZ ZMIANY ADRESÓW !!!<br>
+                </h2>
+
+
+                <hr>
+                <li><a id="L4"></a>Enkoder pozycji rusztu</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a>
+                    <img class="foto" src="img/kubler1.png" style="float:right; margin:0px 100px;  height:150px;">
+                </li>
+                <p>Pozycję zębów przesuwacza linowego każdego z rusztów określamy przy pomocy enkodera Kubler 5868
+                    podłączonego do sieci Profibus DP (<x>dlatego nie można zamieniać
+                        czujników między rusztami.</x>). Jest to enkoder absolutny co oznacza, że po podłączeniu
+                    zasilania licznik nie jest zerowany, lecz pamięta pozycję w jakiej się znajdował. Jeśli ośka
+                    zostanie obrócona przy braku napięcia zasilającego enkoder i tak wskaże prawidłową pozycję. Przed
+                    montażem zapasowego enkodera (jest w budynku B2) należy ustawić właściwy adres profibusowy.
+                    W ty</p>
+                <p>W tym celu należy odkręcić dwie śrubki z tyłu obudowy (3) i zdjąć tylną część obudowy.
+                    Odsłoni się płytka drukowana z dwoma przełącznikami obrotowymi (1) i (2).
+                    <img class="foto" src="img/kubler.png"></p>
+                <p>W zależności od rusztu na którym ma być zabudowany enkoder należy ustawić następujący adres:</p>
+                <ul style="	text-align: left">
+                    <li>Ruszt 1=> adres:28 (hex: 1C) => przełącznik (1): C; przełącznik (2): 1; </li>
+                    <li>Ruszt 2=> adres:29 (hex: 1D) => przełącznik (1): D; przełącznik (2): 1; </li>
+                </ul>
+                <p>Po skręceniu obudowy czujnik jest gotowy do motażu.</p>
+                <h2 class="x">UWAGA:<br><br>
+                    NIE ZOSTAW ROZPIĘTEJ SIECI PROFIBUS !!!<br><br>
+                    NIE ZAMIENIAĆ ENKODERÓW MIĘDZY RUSZTAMI BEZ ZMIANY ADRESÓW !!!<br>
+                </h2>
+                <hr>
+                <li><a id="L5"></a>Skanery położenia kęsa przed piecami</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a>
+                    <img class="foto" src="img/sick_LM111.png" style="float:right; margin:0px 100px;  height:150px;">
+                </li>
+                <p>Skanery zabudowane są przy samotoku przed piecami i służą do automatycznego pozycjonowania kęsa w
+                    rejonie popychacza. Są podłączone do sieci Ethernet, każdy posiada indywidualny adres zapisany w
+                    urządzeniu. </p>
+                <h2 class="x"><br>
+                    NIE PRZESTAWIAJ ICH POZYCJI<br><br>
+                    SKANERY SĄ BARDZO PRECYZYJNIE USTAWIONE<br>
+                </h2>
+                <p>Skanery wymagają okresowego czyszczenia czystą, nie ostrą szmatką (raz na miesiąc). Gdy mimo to nie
+                    działa pozycjonowanie Operator powinien przejść w tryb pracy ręcznej (ich praca nie jest niezbędna
+                    do prawidłowego załadunku pieców). </p>
+
+
+            </ol>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

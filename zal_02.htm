@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Pomoc DWS</title>
+	<meta name="description"
+		content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+	<div id="container">
+		<div id="menuL">
+			<img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+			<div id="zegar">12:00:00</div>
+			<div id="rejon"><span>Załadunek</span></div><br>
+			<div id="linkiRejonu">
+				<a href="zal_00.htm" class="menuitem">Rejon</a>
+				<a href="zal_01.htm" class="menuitem">Konfiguracja PLC</a>
+				<a href="zal_02.htm" class="menuitem mFocus">Tryby pracy</a>
+				<a href="zal_03.htm" class="menuitem">Instrukcja obsługi ST0.3</a>
+				<a href="zal_04.htm" class="menuitem">Czujniki</a>
+				<a href="zal_05.htm" class="menuitem">Obsługa URE</a>
+				<a href="zal_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+			</div>
+		</div>
+		<div id="menuLpom"></div>
+		<div id="content">
+			<img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+			<div id="mac">Mac aktualizacja:2020-07-24</div>
+			<a id="L0"></a>
+			<h1>TRYBY PRACY</h1>
+			<p>Sterowanie rejonu jest podzielone funkcjonalnie na 3 części: </p>
+			<ul class="instrukcjaspis">
+				<li><a href="#L1">Ruszty i manipulatory rusztów</a></li>
+				<li><a href="#L2">Samotoki rejonu wagi</a></li>
+				<li><a href="#L3">Samotoki rejonu pieca</a></li>
+			</ul>
+			<br><a id="L1"></a>
+			<hr>
+			<h1>Ruszty i manipulatory rusztów:<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+			<table>
+				<tr>
+					<th>Tryb RĘCZNY</th>
+					<th>Tryb AUTO</th>
+				</tr>
+				<tr style="text-align: justify; vertical-align: top">
+					<td style="width: 40%">
+						&nbsp&nbsp&nbspNapęd przesuwacza linowego oraz podnoszenie i przesuw manipulatorów (wózków) jest
+						sterowany ręcznie
+						z mostka ST0.3 (po oddaniu sterowania przesuwacz może być sterowany z ST0.1). Samotoki rejonu
+						rusztów (0.02 i 0.05s1)
+						są sterowane ręcznie z mostka ST0.3 (po oddaniu sterowania z ST0.1), ale mogą też dociągać kęsy
+						do rejonu wagi automatycznie.
+						Zależy to od trybu pracy wagi.
+						<p>Samotoki sterowane są poprzez wyhylenie joysticka, który samoczynnie powraca do pozycji
+							zerowej. Aby wymusić ruch
+							samotoku na stałe do przodu należy wcisnąć przycisk półauto. Aby wymusić ruch samotoku na
+							stałe do tyłu należy wyhylić joystick
+							w tył i trzymając go wcisnąć przycisk półauto. By zatrzymać obracający się samotok, należy
+							ponownie wcisnąć przycisk półauto.
+						</p>
+
+					</td>
+					<td>
+						<p>
+							Przed włączeniem tego trybu operator musi wybrać właściwy ruszt i wielkość kęsów.
+							Wszystkie napędy działają automatycznie.
+						</p>
+						<p>
+							Warstwa jest dosuwana do samotoku, następnie manipulator podnosi pojedynczy kęs,
+							przesuwa go nad samotok , opuszcza i wraca pod
+							ruszt. Jeśli samotok jest wolny, kęs jest doprowadzany do czujnika B02. Po pobraniu
+							wszystkich kęsów z warstwy, przesuwacz podąża po następną
+							warstwę. Ustawia zęby za najbliższą warstwą. Na mostku ST0.3 sygnalizuje gotowość
+							przysunięcia kolejnej warstwy Operatorowi (migający żółty przycisk b20, jest to także
+							widoczne na wizualizacji nastawni). Po wciśnięciu przycisku warstwa jest dosuwana a Operator
+							kontroluje czy nie nastąpiło skoszenie (może to się zdarzyć przy złym ułożeniu warstw
+							suwnicą lub nie podniesieniu się zęba przesuwacza).
+						</p>
+						<p>
+							Praca układu oparta jest na pomiarach z czujników. Oddalenie kęsa od samotoku
+							jest mierzone przez czujniki umieszczone przy poszczególnych wózkach. Dlatego każdy wózek
+							jedzie indywidualnie na właściwą pozycję. Jest to istotne przy wygiętym wsadzie. Przy wózku
+							1 znajduje się czujnik laserowy dalekiego zasięgu. Oprócz pomiaru opisanego powyżej sprawdza
+							także w której strefie znajduje się kolejna warstwa gdy pobierzemy wszystkie kęsy z
+							bieżącej. Przesuwacz linowy korzysta z pomiaru położenia zębów poprzez enkoder absolutny i
+							jedzie do przestrzeni wolnej (żółte pasy 40cm namalowane na szynach rusztów) za najbliższą
+							warstwą. Między rusztami i za II rusztem są zabudowane czujniki wskazujące obecność kęsów.
+							Na ich podstawie układ steruje samotokami tak by zachowały odstępy i nie wjeżdżały w strefę
+							wagi (czyli dojeżdżają do czujnika B02).
+						</p>
+
+						<p>Tryb pracy AUTO zostanie "wybity" samoczynnie (na SO migający "RĘCZNY") gdy ruszt
+							będzie pusty lub czujniki wykryją skoszenie warstwy.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<ul style="	text-align: left">
+							&nbsp&nbsp&nbspBez względu na tryb obowiązują blokady:
+							<li>Manipulator nie może wjechać w strefę samotoku (również dołem) gdy samotok jest w ruchu.
+							</li>
+							<li>Samotok nie ruszy dopóki wszystkie wózki nie wyjadą ze strefy samotoku.</li>
+						</ul>
+				</tr>
+			</table>
+
+			<br><a id="L2">
+				<hr>
+				<h1>
+			</a>Samotoki rejonu wagi:<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+
+			<table>
+				<tr>
+					<th>Tryb RĘCZNY</th>
+					<th>Tryb AUTO</th>
+				</tr>
+				<tr style="text-align: justify; vertical-align: top">
+					<td style="width: 40%">
+						&nbsp&nbsp&nbspSamotok 0.05s3 jest sterowany ręcznie z mostka ST0.3 (po oddaniu sterowania może
+						być sterowany z ST0.1). Samotok 0.07 jest sterowany ręcznie z mostka ST0.3 (po oddaniu
+						sterowania może być sterowany z ST0.1, ale tylko do tyłu). Samotok 0.10 jest sterowany ręcznie z
+						mostka ST0.3.
+
+					</td>
+					<td>
+						&nbsp&nbsp&nbspW pierwszej kolejności układ doprowadza kęsa do czujnika B03. W tym celu samotok
+						0.05s3,
+						0.05s1 (a przy wybranym ruszcie I także 0.02) zostaje uruchomiony do jazdy w przód. Przy
+						wybraniu PółAUTO powyższe dociąganie nie działa, trzeba samotokami rusztów sterować ręcznie. Gdy
+						kęs znajduje się na czujniku B03 rozpoczyna się cykl ważenia. Przy pustej wadze są uruchamiane
+						samotoki 0.05s3 i 0.07. Kęs wjeżdża na wagę (0.07 kręci się szybciej by rozdzielić ewentualnie
+						złączone kęsy). Gdy kęs znajdzie się całkowicie na wadze, jest zatrzymany, „uspokojony” i
+						ważony. Zważony kęs zjeżdża na 0.10 i jest zatrzymywany na czujniku B013. Tam czeka na
+						wprowadzenie w rejon pieca. Gdy waga (czyli 0.07) jest pusta następuje tarowanie układu
+						pomiarowego i cykl się powtarza.
+						<br>&nbsp&nbsp&nbspWybicie tego trybu może nastąpić gdy sztuka nie mieści się na wadze (mogą to
+						być dwa złączone kęsy). Dlatego nie należy ręcznie wpychać tzw. „pociągu” samotokami rusztów.
+						<br>&nbsp&nbsp&nbspUkład sumuje wagę wytopu i wyświetla dane na ST0.3. Liczone są również kęsy w
+						wytopie. Po zważeniu ostatniego kęsa jest wyświetlany odpowiedni alert i układ czeka na dane
+						nowego wytopu. Do czasu ich wpisania kolejny kęs czeka przed wagą (na czujniku B03).
+						<br>&nbsp&nbsp&nbspMigający napis AUTO oznacza iż przełącznik jest w pozycji AUTO lub PółAUTO,
+						ale układ pracuje ręcznie do czasu opróżnienia wagi. Wówczas nastąpi samoczynne załączenie trybu
+						(napis przestanie migać).
+					</td>
+				</tr>
+			</table>
+			<br><a id="L3"></a>
+			<hr>
+			<h1>Samotoki rejonu załadunku pieca:<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+			<table>
+				<tr>
+					<th>Tryb RĘCZNY</th>
+					<th>Tryb AUTO</th>
+				</tr>
+				<tr style="text-align: justify; vertical-align: top">
+					<td style="width: 40%">
+						&nbsp&nbsp&nbspSamotok 0.05s3 jest sterowany ręcznie z mostka ST0.3 (po oddaniu sterowania może
+						być sterowany z ST0.1). Samotok 0.07 jest sterowany ręcznie z mostka ST0.3 (po oddaniu
+						sterowania może być sterowany z ST0.1, ale tylko do tyłu). Samotok 0.10 jest sterowany ręcznie z
+						mostka ST0.3.
+
+					</td>
+					<td>
+						&nbsp&nbsp&nbspW pierwszej kolejności układ doprowadza kęsa do czujnik B02. W tym celu samotok
+						0.05s1 (a przy wybranym ruszcie I także 0.02) zostaje uruchomiony do jazdy w przód. Przy
+						wybraniu PółAUTO powyższe dociąganie nie działa, trzeba samotokami rusztów sterować ręcznie. Gdy
+						kęs znajduje się na czujniku B02 rozpoczyna się cykl ważenia. Przy pustej wadze są uruchamiane
+						samotoki 0.05s3 i 0.07. Kęs wjeżdża na wagę (0.07 kręci się szybciej by rozdzielić ewentualnie
+						złączone kęsy). Gdy kęs znajdzie się całkowicie na wadze, jest zatrzymany, „uspokojony” i
+						ważony. Zważony kęs zjeżdża na 0.10 i jest zatrzymywany na czujniku B013. Tam czeka na
+						wprowadzenie w rejon pieca. Gdy waga (czyli 0.07) jest pusta następuje tarowanie układu
+						pomiarowego i cykl się powtarza.
+						<br>&nbsp&nbsp&nbspWybicie tego trybu może nastąpić gdy sztuka nie mieści się na wadze (mogą to
+						być dwa złączone kęsy). Dlatego nie należy ręcznie wpychać tzw. „pociągu” samotokami rusztów.
+						<br>&nbsp&nbsp&nbspUkład sumuje wagę wytopu i wyświetla dane na ST0.3. Liczone są również kęsy w
+						wytopie. Po zważeniu ostatniego kęsa jest wyświetlany odpowiedni alert i układ czeka na dane
+						nowego wytopu. Do czasu ich wpisania kolejny kęs czeka przed wagą (na czujniku B03).
+						<br>&nbsp&nbsp&nbspMigający napis AUTO oznacza iż przełącznik jest w pozycji AUTO lub PółAUTO,
+						ale układ pracuje ręcznie do czasu opróżnienia wagi. Wówczas nastąpi samoczynne załączenie trybu
+						(napis przestanie migać).
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</body>
+
+</html>

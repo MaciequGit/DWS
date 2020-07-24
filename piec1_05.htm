@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <nav>
+                <div id="rejon"><span>Piec 1</span></div><br>
+                <div id="linkiRejonu">
+                    <a href="piec1_00.htm" class="menuitem">Rejon</a>
+                    <a href="piec1_01.htm" class="menuitem">Konfiguracja PLC</a>
+                    <a href="piec1_02.htm" class="menuitem">Tryby pracy</a>
+                    <a href="piec1_04.htm" class="menuitem">Czujniki</a>
+                    <a href="piec1_05.htm" class="menuitem mFocus">Obsługa URE</a>
+					<a href="piec1_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+                </div>
+            </nav>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-07-06</div>
+            <a id="L0"></a></a>
+            <h1>Obsługa URE</h1>
+            <br>
+            <ol class="instrukcjaspis">
+                <li><a href="#L1">Instrukcja zmiany nastaw drzwi załadowczych</a></li>
+                <li><a href="#L2">Instrukcja zmiany nastaw drzwi wyładowczych</a></li>
+                <li><a href="#L3">Instrukcja obsługi drzwi wyładowczych (dla Operatora)</a></li>
+                <li><a href="#L4">Blokady napędów</a></li>
+                <li><a href="#L5">Awarie i rozwiązywanie problemów</a></li>
+            </ol>
+            <br>
+            <hr>
+            <ol class="instrukcjapkt">
+                <li>
+                    <a id="L1">Instrukcja zmiany nastaw drzwi załadowczych</a>
+                    <a href="#L0">
+                        <img style="float:right;" src="img/return.png">
+                    </a>
+                </li>
+                <h4>Zmian można dokonywać ze stacji diagnostycznej na nastawni lub B2</h4>
+                <p>
+                    Po modernizacji sterowanie drzwiami załadowczymi odbywa się z wykorzystaniem enkoderów linkowych
+                    pozycji
+                    rzeczywistej drzwi załadowczych i modułów UnidriveSP (połączonych profibusem ze sterownikiem PLC).
+                    Na mostku ST0.3 zabudowano wyłączniki awaryjne (rzędy 1,2 i rzędy 3,4), przełączniki trybu pracy
+                    (normalna / ewakuacja) i przełączniki wyboru wsadu(160mm / 220mm / 300mm). Tryb pracy ewakuacja
+                    pozwala na opróżnianie pieca przy obniżonym
+                    położeniu drzwi. Aby układ pracował prawidłowo konieczne jest wpisanie pozycji zadanej dla
+                    poszczególnych wsadów. Odbywa się to z poziomu wizualizacji pieca 1.
+                    Należy przejść na ekran : ”DRZWI ZAŁAD.”. W lewej części ekranu widoczny jest zestaw
+                    kontrolek:
+                </p>
+                <img class="foto" src="img/piec1_i3.png">
+                <p>W górnej części sygnalizowane jest zbicie awaryjne i awaria napędu (niesprawność Unidrive’ów SP, lub
+                    luzowników) . Poniżej widać stan kontraktorów i (wewnątrz) stan wirtualnych pozycji (pośrednia góra
+                    i pośrednia dół) – wypracowywanych z pozycji enkoderów. W dole widać nastawy pozycji zadanych dla
+                    wsadów i pozycję rzeczywistą drzwi.</p>
+                <p>Aby wpisać nowe nastawy należy:</p>
+                <ol>
+                    <li>Wcisnąć przycisk „Zmiana nastaw” tak aby otrzymać :”Zmiana nastaw MOŻLIWA”.</li>
+                    <li>Wpisać nastawy dla wymaganego wsadu osobno dla każdego rzędu. </li>
+                </ol>
+                <p>Aktualnie wybrany przez Operatora ST0.3 wsad jest wyświetlany na zielonym tle. Nie należy zmieniać
+                    nastaw dla innych wsadów bez potrzeby. Analogicznie zmienia się wysokość podnoszenia drzwi
+                    załadowczych dla Ewakuacji.Wartości nastaw określają pozycję enkodera. Zwiększenie wartości powoduje
+                    podniesienie pozycji drzwi (około 1cm przy zmianie o 100 jednostek, wpisy w zakresie 8000 - 13000).
+                    Wpisy wpływają na pozycje
+                    POŚREDNIA GÓRNA i POŚREDNIA DOLNA. Pozostałe pozycje odczytywane są z kontaktronów.
+                </p>
+                <p>
+                    Dodatkowo przyciskami można sterować napędami impulsowo (odpowiednik dotychczasowego ręcznego
+                    sterowania stycznikami). Sterowanie odbywa się na zmniejszonych obrotach <x>bez blokady z
+                        kontaktronów!</x> Przyciski należy odblokować analogicznie jak pola wpisu nastaw.
+                </p>
+                <hr>
+                <li>
+                    <a id="L2">Instrukcja zmiany nastaw drzwi wyładowczych</a>
+                    <a href="#L0">
+                        <img style="float:right;" src="img/return.png">
+                    </a>
+                </li>
+
+                <h4>Zmian można dokonywać ze stacji diagnostycznej na nastawni lub B2</h4>
+                <p>
+                    Po modernizacji sterowanie drzwiami wyładowczymi odbywa się z wykorzystaniem enkoderów pozycji
+                    rzeczywistej zabudowanych na przekładni i modułów UnidriveSP (połączonych profibusem ze sterownikiem
+                    PLC).
+                    Na mostku ST0.4 zabudowano przełączniki wyboru wsadu(160mm / 220mm / 300mm). Aby układ pracował
+                    prawidłowo konieczne jest wpisanie pozycji zadanej dla
+                    poszczególnych wsadów. Odbywa się to z poziomu wizualizacji pieca 1.
+                    Należy przejść na ekran : ”DRZWI WYŁAD.”. W prawej części ekranu widoczny jest zestaw
+                    kontrolek:
+                </p>
+                <img class="foto" src="img/piec1_i4.png">
+                <p>
+                    W górnej części sygnalizowane jest zbicie awaryjne i awaria napędu (niesprawność Unidrive’ów SP, lub
+                    luzowników) . Poniżej widać stan pozycji krańcowych i blokady wysadzarki (wszystko z czujników
+                    laserowych) oraz pozycję "góra wyładunek" – wypracowywanej z pozycji enkoderów. W dole widać nastawy
+                    pozycji zadanych dla wsadów i pozycję rzeczywistą drzwi.
+                </p>
+                <p>
+                    Aby wpisać nowe nastawy należy:
+                </p>
+                <ol>
+                    <li>Wcisnąć przycisk „Zmiana nastaw” tak aby otrzymać :”Zmiana nastaw MOŻLIWA”.</li>
+                    <li>Wpisać nastawy dla wymaganego wsadu osobno dla każdego rzędu. </li>
+                </ol>
+                <p>Aktualnie wybrany przez Operatora ST0.4 wsad jest wyświetlany na zielonym tle. Nie należy zmieniać
+                    nastaw dla innych wsadów bez potrzeby. Wartości nastaw określają pozycję enkodera. Zwiększenie
+                    wartości powoduje podniesienie pozycji drzwi (około 1cm przy zmianie o 1 jednostkę, wpisy w zakresie
+                    208 - 226).
+                    Wpisy wpływają na pozycje "góra wyładunek". </p>
+                <br>
+                <hr>
+                <li><a id="L3">Instrukcja obsługi drzwi wyładowczych (dla Operatora)</a>
+                    <a href="#L0">
+                        <img style="float:right;" src="img/return.png">
+                    </a>
+                </li>
+                <ol>
+                    <li><b>Uwagi ogólne</b></li>
+                    <p>W rejonie drzwi wyładowczych pieca 1 zostało zmienione sterowanie. Aktualnie Operator mostka
+                        ST0.4 ma możliwość wyboru wsadu który znajduje się w piecu. Umożliwia to ograniczenie strat
+                        energii cieplnej związanej z otwieraniem drzwi wyładowczych. Drzwi otwierają się (podnoszą) do
+                        pozycji odpowiedniej do wielkości wsadu. Wybór i praca jest analogiczna jak na piecu nr 2.
+                    </p>
+                    <li><b>Wybór wsadu</b></li>
+                    <p>
+                        Na pulpicie sterowniczym mostka ST0.4 zamontowano dwa przełączniki obrotowe służące do wyboru
+                        wsadu znajdującego się w piecu. Wyboru dokonujemy niezależnie dla rzędu I (przełącznik b91) i II
+                        (przełącznik b92). Na każdym z przełączników można wybrać wartości:
+                    </p>
+                    <ul>
+                        <li>160mm</li>
+                        <li>220mm</li>
+                        <li>300mm</li>
+                    </ul>
+                    <li><b>Obsługa drzwi wyładowczych</b></li>
+                    <p>
+                        Poza wyborem wsadu obsługa drzwi nie uległa zmianie. Operator ma do dyspozycji przyciski do
+                        otwierania i zamykania drzwi (niezależnie dla I i II rzędu). Pozycja dolna jest taka sama dla
+                        każdego wsadu (całkowite zamknięcie drzwi). Pozycja górna jest uzależniona od wyboru. W
+                        przypadku konieczności regulacji wysokości podnoszenia dla wybranego wsadu należy skontaktować
+                        się ze służbami URE.
+                    </p>
+                </ol>
+                <hr>
+                <li><a id="L4">Blokady napędów</a>
+                    <a href="#L0">
+                        <img style="float:right;" src="img/return.png">
+                    </a>
+                </li>
+                <p>Poniżej trochę informacji o wzajemnych blokadach od napędów oraz co robić przy awarii czujników
+                    analogowych (oczywiście poza wymianą na nowe :).
+                </p>
+                <h2>Popychacz</h2>
+                <p>
+                    W trybie auto popychacz nie ruszy do przodu dopuki drzwi załadowcze na obu rzędach nie podniosą się
+                    powyżej sygnału "zabezpieczenie popychacza".
+                </p>
+                <h2>Drzwi załadowcze</h2>
+                <p>
+                    Nie ma blokad dla podnoszenia, dla opuszczania są następujące:
+                </p>
+                <ul>
+                    <li>
+                        Pokrok musi być poniżej pozycji opuszczania kęsa na część stałą (I156 musi być równe 0).
+                    </li>
+                    <li>
+                        Aby przy opuszczaniu pokroku drzwi zamknęły się samoczynnie, muszą być powyżej pozycji
+                        "pośrednia górna".
+                    </li>
+                    <li>
+                        Aby zamknąć drzwi ręcznie,drzwi muszą być powyżej pozycji "pośrednia górna" lub
+                        pokrok musi być w DOLE.
+                    </li>
+                </ul>
+                <h2>Pokrok</h2>
+                <p>
+                    Do poprawnej pracy pokrok wymaga załączenia dwóch pomp głównych na podnoszenie i jednej na przesuw
+                    oraz pompy pilotującej. Sterowanie z ST0.4 wymaga pozycji wyjściowej pokroku. Gdy wybije pokrok
+                    można jednorazowo zezwolić na jazdę z wizualizacji. Gdy jednak pokrok nie dojedzie do pozycji trzeba
+                    sprowadzić go do pozycji lokalnie.
+                </p>
+                <p>
+                    Pompy główne można załączać dopiero gdy jest ciśnienie pilotujące.
+                </p>
+                <p>
+                    Pokrok działa w powiązaniu z popychaczem. Po wykonaniu 1 cyklu, wymagane jest załadowanie kęsa lub
+                    odblokowanie pokroku przyciskiem z ST0.3. Można też załączyć tryb EWAKUACJA, a odbokowanie będzie
+                    następować automatycznie.
+                </p>
+                <p>
+                    Do startu pokroku w górę drzwi załadowcze muszą być w pozycji powyżej "zabezpieczenie popychacza"
+                    lub pracować w trybie EWAKUACJA. Dodatkowo gdy pokrok dojdzie powyżej pozycji "zabranie kęsa przy
+                    podnoszeniu" (I157=1), drzwi muszą już być powyżej pozycji "pośrednia górna". Inaczej nastąpi
+                    wybicie
+                    ruchu pokroku w górę. Dodajmy, że gdy pokrok rusza w górę drzwi załadowcze podnoszą się
+                    automatycznie.
+                </p>
+                <p>Gdy wysadzarki nie są poza piecem niemożliwe są ruchy pokroku:</p>
+                <ul>
+                    <li>W górę</li>
+                    <li>W przód, jeśli pokrok nie jest w dole.</li>
+                    <li>W tył, jeśli pokrok nie jest w dole.</li>
+                </ul>
+                <hr>
+                <li>
+                    <a id="L5">Awarie i rozwiązywanie problemów</a>
+                    <a href="#L0">
+                        <img style="float:right;" src="img/return.png">
+                    </a>
+                </li>
+                <h2>Awaria czujnika laserowego pozycji pokroku</h2>
+                <p>
+                    Do wykonania cyklu z ST0.4 niezbędna jest sprawna praca czujników laserowych pozycji poziomej i
+                    pionowej pokroku. Oba czujniki (sick DT-35) mają takie samo ustawienie, również czujniki na piecu 2
+                    są tak samo
+                    zaprogramowane. Zatem można je wykorzystać gdy brak rezerwy.
+                </p>
+                <p>
+                    Jest także możliwe <x>awaryjne przełączenie tego sterowania na drogówkę</x> (na wejście I148 trzeba
+                    podać "1").
+                </p>
+                <h2>Awaria czujnika linkowego pozycji drzwi załadowczych.</h2>
+                <p>
+                    Po wymianie czujnika konieczna jest kontrola pozycji drzwi (pośrednia górna i pośrednia dolna).
+                    Prawdopodobnie konieczne będzie <a href="piec1_05.htm#L1">zmiana nastaw drzwi załadowczych</a>.
+                </p>
+                <p>
+                    <b>Co robić by nie zatrzymywać produkcji.</b> Należy podnieść (przyciskiem z ST0.3) drzwi do pozycji
+                    góra max i wyłączyć
+                    napędy Unidrive (n.p.wyłączniki serwisowe a112 i a122, lub zbić wyłącznik awaryjny drzwi
+                    załadowczych). Drzwi pozostaną otwarte, a pokrok będzie działał. By drzwi nie były całkowicie
+                    otwarte, można podnieść je do pozycji nieco ponad "pośrednia górna" i podmostkować sygnały "góra
+                    max".
+                </p>
+                <h2>Awaria enkodera drzwi wyładowczych.</h2>
+                <p>
+                    Enkoder nie jest sprzężeniem zwrotnym dla Unidrive'a sterującego silnikiem. Służy tylko do regulacji
+                    i sterowania drzwiami w pozycji "góra wyładunek". Przy awarii wystarczy przytrzymywać przycisk
+                    otwierania drzwi, tak by podniosły się do żądanej wysokości. Zamykanie drzwi powinno funkcjonować normalnie.
+                </p>
+                <hr>
+            </ol>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

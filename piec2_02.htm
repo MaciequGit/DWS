@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>Piec 2</span></div><br>
+            <div id="linkiRejonu">
+                <a href="piec2_00.htm" class="menuitem">Rejon</a>
+                <a href="piec2_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="piec2_02.htm" class="menuitem mFocus">Tryby pracy</a>
+                <a href="piec2_04.htm" class="menuitem">Czujniki</a>
+                <a href="piec2_05.htm" class="menuitem">Obsługa URE</a>
+                <a href="piec2_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-07-07</div>
+            <a id="L0"></a>
+            <h1>TRYBY PRACY</h1>
+            <ul class="instrukcjaspis">
+                <li><a href="#L1">Popychacz</a></li>
+                <li><a href="#L2">Drzwi załadowcze</a></li>
+                <li><a href="#L3">Pokrok</a></li>
+                <li><a href="#L4">Drzwi wyładowcze</a></li>
+            </ul>
+            <br><a id="L1"></a>
+            <hr>
+            <h1>Popychacz<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+            <table>
+                <tr>
+                    <th>Tryb RĘCZNY</th>
+                    <th>Tryb AUTO</th>
+                </tr>
+                <tr style="text-align: justify; vertical-align: top">
+                    <td style="width: 50%">
+                        <p>Przyciskami jazda w przód i jazda w tył Operator ST0.3 płynnie porusza popychaczem.
+                            Puszczenie przycisku zatrzymuje napęd. Pozycje krańcowe są ustawione na drogówce (krzywka 1
+                            i 6).
+                        </p>
+                    </td>
+                    <td>
+                        <p>Po wycofaniu popychacza do tyłu Operator załącza AUTO. Ustawia kęs na samotoku ręcznie lub
+                            automatycznie na skanery. Jeśli pozycja jest poprawna wciska przycisk PRZÓD. Popychacz
+                            dojeżdża do pozycji wyczekiwania. Tam oczekuje na ruch pokroku. Gdy pokrok znajduje się w
+                            pozycji PRZÓD i DÓŁ popychacz jedzie do pozycji PRZÓD (spycha kęsa na część stałą pokroku).
+                            Następnie
+                            wraca do pozycji TYŁ. Można ustawiać kolejnego kęsa. </p>
+                    </td>
+                </tr>
+            </table>
+
+            <br><a id="L2"></a>
+            <hr>
+            <h1>
+                </a>Drzwi załadowcze<a href="#L0"><img style="float:right;" src="img/return.png"></a>
+            </h1>
+
+            <p>Drzwi załadowcze są sterowane z mostka ST0.3 przy pomocy przycisków (są wspólne dla obu rzędów):
+            <ul>
+                <li>Otwórz</li>
+                <li>Stop</li>
+                <li>Zamknij</li>
+            </ul>
+            i poruszają się w zakresie poniższych stref (poniższe pozycje ustawia się osobno dla każdego rzędu):
+            <img class="foto" src="img/piec1_i8.png">
+            <ul>
+                <li>Górne MAX i Dolne MAX to sygnały krańcowe z kontraktronów. Zabezpieczają fizyczne granice ruchu
+                    drzwi.
+                </li>
+                <li>Pośrednie górne i Pośrednie dolne to markery wypracowane na podstawie nastaw dla poszczególnych
+                    wsadów i pozycji enkoderów linkowych.</li>
+                <li>Zabezpieczenie popychacza to sygnał z kontraktrona, <x>nieistotny</x> przy sterowaniu drzwi.</li>
+            </ul>
+            </p>
+            <p>Przed rozpoczęciem załadunku Operator ST0.3 ustawia:</p>
+            <img class="foto" src="img/piec1_i7.png">
+            <ul>
+                <li>Przełącznikiem b231 0-narmalne ładowanie wsadu lub Ewakuacja, czyli jedynie wyładunek kęsów. Przy
+                    ewakuacji drzwi opadają niżej, gdyż nie ma pod nimi kęsa na pokroku. Nie trzeba też ręcznie
+                    odblokowywać pokroku po każdym cyklu.</li>
+                <li>Przełącznikiem b232 ustawia wymiary ładowanego wsadu.</li>
+            </ul>
+            <p>Na wizualizacji Nastawni i B2 na ekranie drzwi załadowczych są widoczne nastawy dla wszystkich wsadów
+                oraz trybu ewakuacji. W razie potrzeby można je skorygować z wizualizacji zgodnie z
+                <a href="piec1_05.htm#L1">instrukcją</a> .</p>
+            <h2>Sposób sterowania DZ</h2>
+            <p>Zakładając zamknięte drzwi, po wciśnięciu "OTWÓRZ" (wystarczy impuls), drzwi podnoszą się do pozycji
+                "pośrednia góra" (jeśli chcemy zatrzymać w bieżącej pozycji trzeba wcisnąć "STOP"). Jeśli chcemy
+                otworzyć
+                drzwi bardziej trzeba przytrzymać przycisk "OTWÓRZ". Puszczenie
+                przycisku zatrzymuje napęd (trzymając dojedziemy do pozycji "góra MAX"). </p>
+            <p>Po wciśnięciu "ZAMKNIJ" (wystarczy impuls), drzwi opuszczają się do pozycji
+                "pośrednia dolna" (jeśli chcemy zatrzymać w bieżącej pozycji trzeba wcisnąć "STOP"). Jeśli chcemy
+                zamknąć
+                drzwi bardziej trzeba przytrzymać przycisk "ZAMKNIJ". Puszczenie
+                przycisku zatrzymuje napęd (trzymając dojedziemy do pozycji "dolna MAX"). </p>
+            <p>Przy normalnej pracy Operator chwilowo wciska przyciski "OTWÓRZ" i "ZAMKNIJ" a drzwi otwierają i zamykają
+                się odpowiednio dla wybranego wsadu. Przy ruchu pokroku w górę drzwi podnoszą się samoczynnie do pozycji
+                "pośrednia górna". Przy ruchu pokroku w dół drzwi opuszczają się samoczynnie do pozycji "pośrednia
+                dolna".</p>
+            <br><a id="L3"></a>
+            <hr>
+            <h1>Pokrok<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+            <p>Podstawowy tryb pracy pokroku wybierany jest przełącznikiem w stycznikowni przy PH-3:</p>
+            <ul>
+                <li><b>Rozruch pomp</b> - pokrok nie pracuje. W tej pozycji załącza się pompy główne.</li>
+                <li><b>Praca ręczna</b> - jazda z wydajnością 10%. Sterowanie lokalne z krzyżaka pod pokrokiem.</li>
+                <li><b>Praca auto</b> - sterowanie pokrokiem z mostka ST0.4.</li>
+            </ul>
+            <h2>Sterowanie z ST0.4</h2>
+            <ul>
+                <li><b>PółAUTO</b> - wykonywanie pojedyńczego ruchu jazdy (w górę, w dół, do przodu lub do tyłu). </li>
+                <li><b>AUTO 1-cykl</b> - wykonanie pełnego cyklu pokroku.</li>
+                <li><b>Jałowy (idle)</b> - cykliczne podnoszenie i opuszczanie w celu równomiernego grzania wsadu gdy
+                    materiał nie jest wydawany.</li>
+            </ul>
+            <p>Do poprawnej pracy pokrok wymaga załączenia dwóch pomp głównych  oraz
+                pompy pilotującej.
+                Sterowanie z ST0.4 wymaga pozycji wyjściowej pokroku. Gdy wybije pokrok można jednorazowo zezwolić na
+                jazdę z wizualizacji. Gdy jednak pokrok nie dojedzie do pozycji trzeba sprowadzić go do pozycji
+                lokalnie. </p>
+            <p>W normalnie używanym trybie AUTO 1-cykl po wykonaniu pełnego cyklu pokroku następuje blokada od
+                załadunku. Aby odblokować pokrok należy:</p>
+            <ul>
+                <li>załadować kolejnego kęsa na pokrok lub</li>
+                <li>załączyć tryb EWAKUACJA (na ST0.3).W tym trybie odblokowanie następuje samoczynnie, lub</li>
+                <li>odblokować pokrok ręcznie przyciskiem na ST0.3</li>
+            </ul>
+            <h2>Skok pokroku</h2>
+            <p>Obecnie wykorzystujemy następujące oczujnikowanie do ruchu pokroku:</p>
+            <ul>
+                <li>Drogówka pozycji pionowej - wykorzystujemy wszystkie sygnały. </li>
+                <li>Drogówka pozycji poziomej - wykorzystujemy pozycje krańcowe i zwolnienie przed przód max. </li>
+                <li>Czujniki laserowe pozycji pokroku - wykorzystujemy pozycje: pionową i poziomą. Na tej podstawie
+                    obliczany i sterowany jest przesuw do przodu aby osiągnąć zadany skok. Układ koryguje niedokładności
+                    mechaniczne w kolejnych cyklach. </li>
+            </ul>
+
+
+
+
+            <br><a id="L4"></a>
+            <hr>
+            <h1>Drzwi wyładowcze<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+            <p>Drzwi wyładowcze są sterowane z mostka ST0.4 przy pomocy przycisków (są osobno dla obu rzędów, jednak po
+                sprzęgnięciu DW wiodące są przyciski rzędu 3):
+            <ul>
+                <li>Otwórz</li>
+                <li>Stop</li>
+                <li>Zamknij</li>
+            </ul>
+            i poruszają się w zakresie poniższych stref (poniższe pozycje ustawia się osobno dla każdego rzędu):
+            <img class="foto" src="img/piec1_i11.png">
+            <p>Wszystkie sygnały pochodzą z czujników kontatktronowych. Na piecu 2 nie wykorzystujemy enkoderów.</p>
+            </p>
+            <p>Przed rozpoczęciem wyładunku Operator ST0.4 ustawia wielkość wsadu.</p>
+
+            <h2>Sposób sterowania DW</h2>
+            <p>Drzwi wyładowcze po zamknięciu zawsze zatrzymują się na krańcówce "Dolna MAX". Po wciśnięciu
+                "OTWÓRZ" (wystarczy impuls), drzwi podnoszą się do pozycji "Góra wyładunek". Odpowiada to pozycji "Góra
+                &nbspwsad&nbsp300", "Góra&nbspwsad&nbsp220" lub "Góra&nbspwsad&nbsp160" w zależności od ustawionego przez Operatora wsadu. Jeśli
+                chcemy
+                otworzyć drzwi bardziej trzeba przytrzymać przycisk "OTWÓRZ"
+                Po wciśnięciu "ZAMKNIJ" (wystarczy impuls), drzwi powracają do pozycji "Dolna MAX".</p>
+            <p>Przyciskiem "STOP" w każdej chwili przerywamy ruch drzwi.</p>
+            <p>Dodatkowo w trybie automatyki wyładunku po wyjęciu kęsa wysadzarką (pozycja góra i tył) drzwi zamykają
+                się samoczynnie.</p>
+            <br><a id="L5"></a>
+
+
+
+
+
+
+
+
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

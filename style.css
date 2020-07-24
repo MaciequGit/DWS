@@ -1,0 +1,202 @@
+html
+{
+	height: 100vh;
+	line-height: 150%;
+	scroll-behavior: smooth;
+}
+body
+{
+	background-color: #888;
+	color: #fff;
+	/* font-family: 'Arial', sans-serif; */
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 125%;
+	height: 100%;
+	background-image: url("img/tlo.png");
+	margin: 0px;
+}
+
+#container
+{
+	background-color: #2E3342;
+	/* line-height: 150%; */
+	width: 1350px;
+	/* height: 100%; */
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	min-height: 100%;
+	border-left: 2px solid #F5522E;
+	border-right: 2px solid #F5522E;
+/*	border-style: solid;
+  border-width: 5px; */
+
+}
+#zegar
+{
+	font-family: 'Arial', sans-serif;
+	font-size: 48px;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 30px;
+
+}
+#content
+{
+	margin: 10px;
+	width: 950px;
+	height: 100%;
+	background-color: #444;
+	float: left;
+	padding: 10px;
+	text-align: center;
+	min-height: inherit;
+}#menuLpom,  #menuL{
+	margin: 10px;
+	margin-left: 50px;
+	width: 260px;
+	float: left;
+}
+#menuL{
+	position:fixed;
+	min-height: 500px;
+/*	max-height: 700px; */
+	background-color: #444;
+	text-align: center;
+	/*border-radius: 8px;*/
+	overflow-y: auto;
+	overflow-x:hidden;
+}
+#mac{
+	font-size: 12px;
+	font-style: italic;
+	text-align: right
+/*	position:absolute;
+	bottom:1px;
+	right:3px
+*/
+}#awaryjny{
+	background-color: red;
+	padding: 10px;
+	margin-left: 50px;
+	margin-right: 50px;
+	border-radius: 5px;
+	border: 4px solid yellow;
+}
+a:link, a:visited   {
+	color: rgb(20, 223, 223);
+}
+a.menuitem  {
+	background-color: #888;
+	width: 170px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	margin-top: 10px;
+	border-radius: 5px;
+	transition-duration: 0.25s; /* Animation */
+	display: block;
+	text-decoration: none;
+	color:inherit;
+	/* border-style: solid;
+	border-color: #F5522E; */
+}
+.mFocus {
+	border: 2px solid #E74B29;
+}
+.menuitem:hover{
+	color: #F5522E;
+	transform:translateX(10px);
+	background-color: #666;
+}
+.instrukcjapkt > li{
+	text-align: left;
+	color: #F5522E;
+	font: bold 140% Verdana;
+}
+.instrukcjaspis > li{
+	text-align: left;
+	font: bold 140% Verdana;
+}
+
+.instrukcjaspis > li > a:link  {color: #FFF; text-decoration: none;}
+.instrukcjaspis > li > a:visited{color: #FFF; text-decoration: none;}
+.instrukcjaspis > li > a:hover{color: #F5522E;}
+
+#rejon{
+	font-size: 24px;
+	font-weight: bold;
+	color: #E74B29;
+	color: #DDD;
+
+	width: 220px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	margin-top: 10px;
+	border: 2px solid #E74B29;
+	border-radius: 5px;
+}
+#rejon span{
+	cursor: pointer
+}
+#rejon span:hover{
+	color: #F5522E;
+}
+table{
+	margin: auto;
+}
+p {
+	text-indent: 50px;
+	text-align: justify;
+	line-height: 150%;
+}
+li {	text-align: justify;}
+td {
+	margin: 15px;
+	padding: 10px;
+	background-color:#666;
+}
+th {
+	padding: 10px;
+	color: #D4F1C7;
+}
+h1{
+   	line-height: 130%;
+}
+
+
+hr {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #E74B29 inset;
+}
+x, .x { /* na to user ma zwrócić uwagę*/
+	color:  rgb(240, 52, 199);
+	letter-spacing: 1px;
+	/* background-color: rgb(212, 247, 118); */
+}
+.foto {
+	display: block;
+	/* margin-left: auto;
+	margin-right: auto; */
+	max-width: 850px;
+	margin: 30px auto;
+	box-shadow: 0px 0px  15px  0px white;
+}
+#lupa {
+	width: 100%; 
+	margin-bottom: -10px;
+	object-fit: contain;
+}
+#lupa:hover {
+	/* po najechaniu myszą   zawartość obrazka   przyjmie oryginalne   rozmiary */
+	object-fit: none;
+}
+#lupa:not(:hover) {
+	object-position: 50% 50% !important;
+}
+
+
+
+

@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Pomoc DWS</title>
+	<meta name="description"
+		content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+	<div id="container">
+		<div id="menuL">
+			<img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+			<div id="zegar">12:00:00</div>
+			<div id="rejon"><span>Załadunek</span></div><br>
+			<div id="linkiRejonu">
+				<a href="zal_00.htm" class="menuitem">Rejon</a>
+				<a href="zal_01.htm" class="menuitem">Konfiguracja PLC</a>
+				<a href="zal_02.htm" class="menuitem">Tryby pracy</a>
+				<a href="zal_03.htm" class="menuitem mFocus">Instrukcja obsługi ST0.3</a>
+				<a href="zal_04.htm" class="menuitem">Czujniki</a>
+				<a href="zal_05.htm" class="menuitem">Obsługa URE</a>
+				<a href="zal_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+			</div>
+		</div>
+		<div id="menuLpom"></div>
+		<div id="content">
+			<img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+			<div id="mac">Mac aktualizacja:2020-05-13</div>
+			<a id="L0"></a></a>
+			<h1>I N S T R U K C J A<br>OBSŁUGI UKŁADU AUTOMATYCZNEGO<br> ZAŁADUNKU Z RUSZTÓW<br> MOSTEK ST0.3<br></h1>
+			<br>
+			<p> Spis treści: </p>
+			<ol class="instrukcjaspis">
+				<li><a href="#L1">Uwagi ogólne</a></li>
+				<li><a href="#L2">Warunki poprawnej pracy układu</a></li>
+				<li><a href="#L3">Widok mostka ST0.3</a>
+				<li><a href="#L4">Załączanie napędów</a></li>
+				<li><a href="#L5">Opis działania układu</a></li>
+				<li><a href="#L6">Załadunek suwnicą</a></li>
+				<li><a href="#L7">Blokady</a></li>
+				<li><a href="#L8">Stacja operatorska</a></li>
+			</ol>
+			<br>
+			<hr>
+			<ol class="instrukcjapkt">
+				<li><a id="L1"></a>Uwagi ogólne</a><a href="#L0"><img style="float:right;" src="img/return.png"></a>
+				</li>
+				<p>W ramach modernizacji zostało zmienione sterowanie i obsługa następujących urządzeń:</p>
+				<ul style="	text-align: left">
+					<li>Samotok w rejonie rusztu I 0.02</li>
+					<li>Samotok w rejonie rusztu II 0.05</li>
+					<li>Przesuwacz na ruszcie I 0.01</li>
+					<li>Przesuwacz na ruszcie II 0.02</li>
+				</ul>
+				<p>Zamontowano także manipulatory na obu rusztach (każdy manipulator po 4 wózki).
+					Sterowanie pozostałych urządzeń pozostaje bez zmian. W rejonie rusztów zabudowano
+					8 czujników obecności materiału oraz lasery pomiaru położenia kęsów w ruszcie.</p>
+				<hr>
+				<li><a id="L2"></a>Warunki poprawnej pracy układu</a><a href="#L0"><img style="float:right;"
+							src="img/return.png"></a></li>
+				<p>Opisywany układ podobnie jak inne układy automatyki wymaga powtarzalnego procesu transportu wsadu w
+					rejonie załadunku pieców. Będzie to spełnione, jeżeli:</p>
+				<ul style="	text-align: left">
+					<li>Czujniki układu będą sprawne.</li>
+					<li>Napędy elektryczne oraz mechanika urządzeń będą sprawne.</li>
+					<li>Materiał na załączonych samotokach będzie się przesuwał bez zakłóceń. </li>
+				</ul>
+				<hr>
+				<li><a id="L3"></a>Widok mostka ST0.3. Wyłączenie awaryjne</a><a href="#L0"><img style="float:right;"
+							src="img/return.png"></a></li>
+				<p>Na mostku ST0.3 dla potrzeb układu została zabudowana Stacja Operatorska SOST0.3.
+					oraz nowy pulpit operatorski. Osprzęt służący do załadunku z rusztów został oznaczony na rys.1.</p>
+				<h3 ID="awaryjny">Wyłączenie awaryjne <br>
+					Do wyłączenia awaryjnego rejonu załadunku należy użyć wyłącznika –grzyba (19). Ponownego zazbrojenia
+					dokonujemy przyciskiem (24).
+				</h3><br>
+				<img class="foto" src="img/zal_i1.png">
+				<div style="text-align: center;">Rys.1 Widok pulpitu na mostku ST0.3 z zaznaczeniem osprzętu
+					sterującego załadunkiem z rusztów.</div><br>
+
+				<ol style="column-count:2; text-align:left;">
+					<li>manipulator rusztu 1 stan napędu</li>
+					<li>manipulator rusztu 2 stan napędu</li>
+					<li>ruszt 1 stan napędu</li>
+					<li>ruszt 2 stan napędu</li>
+					<li>samotoki ruszt 1 stan napędu</li>
+					<li>samotoki ruszt 2 stan napędu</li>
+					<li>samotoki waga+0.10 stan napędu</li>
+					<li>samotoki piec 1 stan napędu</li>
+					<li>samotoki piec 2 stan napędu</li>
+					<li>manipulator rusztu 1 załączenie napędu</li>
+					<li>manipulator rusztu 2 załączenie napędu</li>
+					<li>ruszt 1 załączenie napędu</li>
+					<li>ruszt 2 załączenie napędu</li>
+					<li>samotoki ruszt 1 załączenie napędu</li>
+					<li>samotoki ruszt 2 załączenie napędu</li>
+					<li>samotoki waga+0.10 załączenie napędu</li>
+					<li>samotoki piec 1 załączenie napędu</li>
+					<li>samotoki piec 2 załączenie napędu</li>
+					<li>rejon załadunku wyłączenie awaryjne</li>
+					<li>drzwi załadowcze piec1 wyłączenie awaryjne</li>
+					<li>drzwi załadowcze piec2 wyłączenie awaryjne</li>
+					<li>piec1 wyłączenie awaryjne</li>
+					<li>piec2 wyłączenie awaryjne</li>
+					<li>rejon załadunku zazbrojenie awar.</li>
+					<li>Próba lampek</li>
+					<li>manipulator 1 start półauto</li>
+					<li>manipulator 1</li>
+					<li>manipulator 2 start półauto</li>
+					<li>manipulator 2 </li>
+					<li>ruszt 1 start półauto</li>
+					<li>ruszt 1 + samotok</li>
+					<li>samotok R1 odłączenie sekcji 2</li>
+					<li>samotok R1 start półauto</li>
+					<li>ruszt 2 start półauto</li>
+					<li>ruszt 2 + samotok</li>
+					<li>samotok R2 odłączenie sekcji 2</li>
+					<li>samotok R2 start półauto</li>
+					<li>drzwi załadowcze piec1 sterowanie góra</li>
+					<li>drzwi załadowcze piec1 stop</li>
+					<li>drzwi załadowcze piec1 sterowanie dół</li>
+					<li>drzwi załadowcze piec2 sterowanie góra</li>
+					<li>drzwi załadowcze piec2 stop</li>
+					<li>drzwi załadowcze piec2 sterowanie dół</li>
+					<li>popychacz piec1 tryb pracy 0ReAu</li>
+					<li>popychacz piec1 sterowanie przód</li>
+					<li>popychacz piec1 stop</li>
+					<li>popychacz piec1 sterowanie tył</li>
+					<li>popychacz piec2 tryb pracy 0ReAu</li>
+					<li>popychacz piec2 sterowanie przód</li>
+					<li>popychacz piec2 stop</li>
+					<li>popychacz piec2 sterowanie tył</li>
+					<li>samotok piec1</li>
+					<li>samotok piec1 odłączenie sekcji 2</li>
+					<li>samotok piec1 start półauto</li>
+					<li>samotok piec2</li>
+					<li>samotok piec2 odłączenie sekcji 2</li>
+					<li>samotok piec2 start półauto</li>
+					<li>zderzak 12,5m piec1 podnoszenie</li>
+					<li>zderzak 12,5m piec1 opuszczanie</li>
+					<li>zderzak 13,5m piec1 podnoszenie</li>
+					<li>zderzak 13,5m piec1 opuszczanie</li>
+					<li>zderzak 12,5m piec2 podnoszenie</li>
+					<li>zderzak 12,5m piec2 opuszczanie</li>
+					<li>zderzak 13,5m piec2 podnoszenie</li>
+					<li>zderzak 13,5m piec2 opuszczanie</li>
+					<li>samotok waga + 0.10</li>
+					<li>wybór wsadu piec1 160 220 300</li>
+					<li>ewakuacja piec1</li>
+					<li>wybór wsadu piec2 160 220 300</li>
+					<li>ewakuacja piec2</li>
+					<li>ruszty i manipulatory tryb pracy RePółAu</li>
+					<li>samotoki ruszty i waga tryb pracy RePółAu</li>
+					<li>samotoki piece tryb pracy RePółAu</li>
+					<li>blokada pokroku piec1</li>
+					<li>blokada pokroku piec2</li>
+					<li>licznik sztuk</li>
+					<li>licznik sztuk dodaj</li>
+					<li>licznik sztuk odejmij</li>
+					<li>licznik sztuk reset</li>
+					<li>samotok waga + 0.10 start półauto
+				</ol>
+				<hr>
+				<li><a id="L4"></a>Załączanie napędów</a><a href="#L0"><img style="float:right;"
+							src="img/return.png"></a></li>
+				<p>W lewej górnej części pulpitu znajdują się stacyjki z kluczykami służące do załączania poszczególnych
+					napędów
+					oraz odpowiadające im lampki sygnalizacyjne (1..18). Przekręcenie stacyjki w lewo wyłącza napęd, zaś
+					świecąca
+					lampka wskazuje gotowość do załączenia. Po przekręceniu stacyjki w prawo lampka powinna zgasnąć.
+					Jeśli lampka miga
+					sygnalizuje błąd napędu. Błędy można kasować wyłączając i ponownie włączając stacyjkę.</p>
+				<hr>
+				<li><a id="L5"></a>Opis działania układu</a><a href="#L0"><img style="float:right;"
+							src="img/return.png"></a></li>
+				<p>Zadaniem opisywanego układu jest podawanie kęsów z rusztów załadowczych na samotok doprowadzający do
+					wagi.
+					Urządzenia załadunku mogą być sterowane z mostka ST0.1 lub ST0.3. Wyboru miejsca sterowania dokonuje
+					Operator
+					ST0.3 na stacji operatorskiej. W przypadku potrzeby sterowania z ST0.1 należy sprowadzić manipulator
+					do pozycji
+					dół i tył, następnie oddać sterowanie. Od tego momentu można podawać kęsy z wykorzystaniem
+					dotychczasowego osprzętu
+					zabudowanego na mostku ST0.1 (z tego mostka sterujemy rusztem i samotokami, nie ma tu sterowania
+					manipulatorem). </p>
+				<p>Po wybraniu sterowania z ST0.3 układ może działać w trzech trybach pracy:</p>
+				<ul style="	text-align: left">
+					<li>AUTOMATYCZNY</li>
+					<li>PÓŁAUTOMATYCZNY</li>
+					<li>RĘCZNY</li>
+				</ul>
+				<p>Wyboru dokonuje Operator ST0.3 na prawym pulpicie przy użyciu przełącznika (71)</p>
+				<img class="foto" src="img/zal_i3.png">
+				<ul style="	text-align: left">
+					<li>TRYB PRACY AUTO
+						<p>Ten tryb pracy zapewnia największy zakres samoczynnej pracy napędów. Przed załączeniem AUTO
+							należy załączyć napędy
+							rusztu, manipulatora i samotoku, przejąć sterowanie i wybrać rodzaj wsadu oraz ruszt, z
+							którego będą pobierane kęsy
+							(na stacji operatorskiej). Następnie wybieramy AUTO przełącznikiem (71). Układ samoczynnie
+							pojedzie do najbliższej
+							strefy po kęsy, podjedzie pierwszym kęsem w rejon manipulatora. Kęs zostanie przełożony na
+							samotok oraz odprowadzony
+							samotokiem poza ruszt. Wówczas przesuwacz ruszt podsunie kolejny kęs w rejon manipulatora.
+							Gdy skończą się kęsy w warstwie.
+							Przesuwacz pojedzie po następną warstwę. Gdy ruszt będzie pusty układ „wybije tryb AUTO”
+							(przy pozycji przełącznika AUTO na
+							stacji będzie wyświetlany migający napis „RECZNY”). Po załadowaniu rusztu należy b1
+							przełączyć w tryb RECZNY i ponownie w AUTO.</p>
+					</li>
+					<li>TRYB PRACY PÓŁAUTO
+						<p>Tryb podobny do AUTO, ale wymagający ręcznego startu kroku jazdy rusztu (przyciskiem 30 lub
+							34) oraz kroku
+							jazdy manipulatora (przyciskiem 26 lub 28). Daje większą kontrolę nad poszczególnymi krokami
+							automatyki, ale bardziej
+							angażuje Operatora.</p>
+					</li>
+					<li>TRYB PRACY RĘCZNY
+						<p>W tym trybie sterowanie odbywa się z wykorzystaniem zadajników ręcznych odpowiednio:
+							Przesuwacz rusztu – (31 lub 35) w osi pionowej.
+							Samotok – (31 lub 35) w osi poziomej oraz (32,33 lub 36,37)
+							Manipulator (27 lub 29) – sposób sterowania i stan wózków widoczny na stacji operatorskiej.
+							Przed opuszczeniem mostka przez Operatora tryb pracy należy przełączyć na ręczny oraz
+							wyłączyć sterowanie napędów
+							kluczykami w stacyjkach (10-18).</p>
+					</li>
+				</ul>
+				<hr>
+				<li><a id="L6"></a>Załadunek suwnicą</a><a href="#L0"><img style="float:right;"
+							src="img/return.png"></a></li>
+				<p><b>Dla pracy układu kluczowe jest odpowiednie ładowanie kęsów na ruszty:</b></p>
+				<ul style="	text-align: left">
+					<li>Kęsy układamy całkowicie z lewej strony rusztu jednak tak by nie wystawały poza obrys rusztu
+						(jest tam zabudowany
+						czujnik z lusterkiem). </li>
+					<li>Jeśli długość kęsów jest taka, że jego prawa strona kończy się na wózku należy je położyć tak by
+						wszystkie kęsy w
+						warstwach opierały się stabilnie na wózku i były widoczne dla laserowego czujnika położenia
+						zamontowanego przy tym wózku.</li>
+					<li>Na rusztach oznaczono strefy w których odkładamy warstwy kęsów (pomiędzy żółtymi pasami 120cm).
+						Żółte pasy (40cm) to
+						przerwy do których będzie wjeżdżał przesuwacz rusztu w trybach automatycznych. Żaden kęs nie
+						powinien leżeć, nawet częściowo,
+						na żółtym pasie.</li>
+					<li>Warstwy powinny być odkładane równolegle do zębów przesuwacza.</li>
+				</ul>
+				<h3>
+					<p>Aby nie uszkodzić zębów przesuwaczy linowych na rusztach ich ruch jest widoczny na
+						sygnalizatorach optyczno-dźwiękowych
+						zabudowanych obok rusztów. Przy ruchu do tyłu - sygnalizacja przerywana 1Hz ; przy ruchu do
+						przodu - sygnalizacja ciągła.</p>
+					WYJĄTKI:
+					<ul style="	text-align: left">
+						<li>Kęsy długości 5,5 – 5,8m są przesuwane dwoma zębami przesuwacza. Można układać je do 50cm
+							poza obrysem rusztu tak by były przesuwane bardziej równomiernie. Należy zwrócić uwagę by
+							przy przekładaniu na samotok nie kolidowały ze zderzakiem umieszczonym na początku samotoku.
+							Dla ułatwienia w odległości 50cm poza obrysem rusztu zamocowano linkę pomocniczą.</li>
+						<li>Kęsy o długości 9m należy przesunąć w prawo tak by wszystkie opierały się stabilnie na
+							trzecim wózku, a jednocześnie były widziane przez laser pierwszego wózka.</li>
+						<li>Kęsy o długości ok.12m należy przesunąć w prawo tak by wszystkie opierały się stabilnie na
+							czwartym wózku, a jednocześnie były widziane przez laser pierwszego wózka. Wszystkie muszą
+							być też widoczne przez czujnik laserowy umieszczony przy czwartym wózku.</li>
+					</ul>
+				</h3>
+				Na rysunku 2 są pokazane powyższe wyjątki. W kolorze zielonym przedstawiono prawidłowe ułożenie wsadu.
+				<img class="foto" src="img/zal_i4.png">
+				<div style="text-align: center;">Rys.2 Widok rusztu </div><br>
+				<hr>
+
+				<li><a id="L7"></a>Blokady</a><a href="#L0"><img style="float:right;" src="img/return.png"></a></li>
+				<p>W celu zabezpieczenia urządzeń przed uszkodzeniem będzie zaimplementowanych kilka blokad:</p>
+				<ul style="	text-align: left">
+					<li>Samotok nie może ruszyć, gdy wózki nie są schowane w ruszcie (w tyle).</li>
+					<li>Wózki nie wjadą w strefę samotoku, gdy samotok jest w ruchu.</li>
+					<li>Do pracy ręcznej (spychanie w starym stylu) manipulator musi być w dole
+						i w tyle.</li>
+					<li>Ruszt może jechać do przodu, gdy wózki są w dole.</li>
+					<li>Nie należy podnosić wózków, gdy ruszt jest w ruchu do przodu.</li>
+				</ul>
+				<h3>
+					<p>Układ nie zabezpieczy przed wszystkimi sytuacjami w rejonie załadunku. W trybie ręcznym należy
+						sterować rozsądnie. Jeśli w trybie automatycznym następuje awaryjna sytuacja (sztuka spada z
+						manipulatora, przesuwacz zabiera warstwę tylko z jednej strony
+						i „kosi”) należy natychmiast przełączyć tryb na RECZNY (przełącznik 71).</p>
+				</h3>
+				<hr>
+
+				<li><a id="L8"></a>Stacja operatorska</a><a href="#L0"><img style="float:right;"
+							src="img/return.png"></a></li>
+				<img class="foto" src="img/zal_i2.png">
+				<div style="text-align: center;">Rys.2 Widok części ekranu SO służący do obsługi załadunku.</div><br>
+
+				<p>Do obsługi funkcji załadunku kęsów z rusztów wykorzystujemy część ekranu stacji operatorskiej
+					przedstawioną na rysunku 2. Są to:</p>
+				<ul style="	text-align: left">
+					<li>Wybór miejsca sterowania ST0.1 lub ST0.3.</li>
+					<li>Wybór przekroju wsadu 160/220/300.</li>
+					<li>Widok trybu pracy.</li>
+					<li>Widok miejsca sterowania.</li>
+					<li>Widok stanu manipulatora i jazdy przesuwacza rusztu.</li>
+				</ul>
+				<p>Wykorzystanie powyższych ustawień zostało szczegółowo omówione w poprzednich punktach.</p>
+			</ol>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</body>
+
+</html>

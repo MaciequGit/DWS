@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>Piec 1</span></div><br>
+            <div id="linkiRejonu">
+                <a href="piec1_00.htm" class="menuitem">Rejon</a>
+                <a href="piec1_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="piec1_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="piec1_04.htm" class="menuitem mFocus">Czujniki</a>
+                <a href="piec1_05.htm" class="menuitem">Obsługa URE</a>
+                <a href="piec1_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-07-13</div>
+            <a id="L0"></a></a>
+            <h1>CZUJNIKI</h1>
+            <br>
+            <ol class="instrukcjaspis">
+                <li><a href="#L1">Czujniki pozycji drzwi załadowczych</a></li>
+                <li><a href="#L2">Czujniki pozycji drzwi wyładowczych</a></li>
+                <li><a href="#L3">Czujniki położenia pokroku</a>
+                <li><a href="#L4">Drogówka popychacza</a></li>
+            </ol>
+            <br>
+            <hr>
+            <ol class="instrukcjapkt">
+                <li><a id="L1"></a>Czujniki pozycji drzwi załadowczych</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a>
+                    <img class="foto" src="img/linkowy.png"
+                        style="float:right;margin:0px 120px;height:140px;border-radius:8px;">
+                </li>
+                <p>
+                    Do pomiaru pozycji drzwi załadowczych zastosowano czujniki linkowe WDS-1500-P60-SR-I z wyjściem
+                    prądowym 4..20mA. Sygnał analogowy jest odczytywany w masterze 0PLC1.Czujniki są zabudowane przy
+                    przeciwwagach drzwi. Pozycje krańcowe pobierane są z kontraktronów.
+                </p>
+                <hr>
+
+                <li><a id="L2"></a>Czujniki pozycji drzwi wyładowczych</a><a href="#L0">
+                        <img style="float:right;" src="img/return.png"></a>
+                    <img class="foto" src="img/larm.png"
+                        style="float:right;margin:10px 100px;height:140px;border-radius:8px;">
+                </li>
+                <p>
+                    Na przekładni nad drzwiami zabudowano enkodery inkrementalne A quad B podłączone do licznika
+                    UnidriveM. Pozycja odczytywana jest po profibusie i kalibrowana sygnałem krańcowym "dół max" drzwi
+                    na wartość 100. Pozycje krańcowe ustawiane są na czujnikach laserowych Sick WT14-2P zabudowanych
+                    przy przeciwwadze drzwi. Również tam ustawiana jest pozycja "blokada wysadzarki" (generuje tylko
+                    krótki impuls "0" przy jeździe drzwi).
+                </p>
+
+                <hr>
+                <li><a id="L3"></a>Czujniki położenia pokroku</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a>
+                    <img class="foto" src="img/sick_dx.png"
+                        style="float:right; margin:0px 100px;  height:180px;border-radius:8px;">
+                </li>
+                <p>Pozycję pokroku (osobno pionową i poziomą) ustalamy na podstawie drogówek oraz czujników laserowych
+                    SICK DT-35 z wyjściem 4..20mA. Pozycja pionowa do sterowania urządzeniami jest brana z drogówki
+                    (pozycja z lasera wykorzystana jest dla potrzeb wizualizacji na ST0.4 i pomiaru skoku
+                    pokroku).Sterowanie rozdzielaczami do jazdy poziomej wykorzystuje pomiary laserowe. Jest także
+                    możliwe <x>awaryjne przełączenie tego sterowania na drogówkę</x>(na wejście I148 trzeba podać "1").
+                    Niezależnie od tego pozycje krańcowe "przód max" i "tył max" są brane z drogówki.</p>
+                <hr>
+                <li><a id="L4"></a>Drogówka popychacza</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a></li>
+                <img class="foto" src="img/piec1_i6.png">
+
+
+
+            </ol>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

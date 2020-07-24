@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>Piec 2</span></div><br>
+            <div id="linkiRejonu">
+                <a href="piec2_00.htm" class="menuitem">Rejon</a>
+                <a href="piec2_01.htm" class="menuitem mFocus">Konfiguracja PLC</a>
+                <a href="piec2_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="piec2_04.htm" class="menuitem">Czujniki</a>
+                <a href="piec2_05.htm" class="menuitem">Obsługa URE</a>
+                <a href="piec2_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-07-22</div>
+            <h1>KONFIGURACJA STEROWNIKA PLC</h1>
+
+            <table>
+                <tr>
+                    <th>Element</th>
+                    <th>Lokalizacja</th>
+                    <th>Opis wejść i wyjść</th>
+                </tr>
+                <tr>
+                    <td>Master</td>
+                    <td>B2 0S4</td>
+                    <td>
+                        Sygnały wejściowe mostka ST0.3. Sygnały wejściowe i wyjściowe  CP21 i popychacza 0.35. Odczyt pozycji drzwi załadowczych z enkoderów
+                        linkowych. Czujniki podają sygnał prądowy 4..20mA
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Slave1</td>
+                    <td>CP21 (stycz.&nbspPH-3)</td>
+                    <td>
+                        Technologiczne sygnały wejściowe z pieca (1..160)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Slave2</td>
+                    <td>CP21 (stycz.&nbspPH-3)</td>
+                    <td>
+                        Technologiczne sygnały wejściowe z pieca (161..192) <br>
+                        Sygnały wyjściowe (1..64): sterowanie i synoptyka
+                        Sterowanie analogowe rozdzielaczy pomp głównych.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Slave4</td>
+                    <td>CP21 (stycz.&nbspPH-3)</td>
+                    <td>
+                        Odczyt pozycji poziomej i pionowej pokroku z czujników laserowych. Czujniki podają sygnał
+                        prądowy 4..20mA. Sterowanie pomp filtrujących
+                    </td>
+                </tr>
+                <tr>
+                    <td>Drzwi załadowcze rząd 3</td>
+                    <td>Stycznikownia B2 CP22</td>
+                    <td>
+                        UnidriveSP drzwi załadowcze rząd 3
+                    </td>
+                </tr>
+                <tr>
+                    <td>Drzwi załadowcze rząd 4</td>
+                    <td>Stycznikownia B2 CP22</td>
+                    <td>
+                        UnidriveSP drzwi załadowcze rząd 4
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Drzwi wyładowcze rząd 3</td>
+                    <td>Stycznikownia B2 0S3|8T</td>
+                    <td>
+                        UnidriveM701 drzwi wyładowcze rząd 3
+                    </td>
+                </tr>
+                <tr>
+                    <td>Drzwi wyładowcze rząd 4</td>
+                    <td>Stycznikownia B2 0S3|9T</td>
+                    <td>
+                        UnidriveM701 drzwi wyładowcze rząd 4
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

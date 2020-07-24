@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>DuoNawrotna</span></div><br>
+            <div id="linkiRejonu">
+                <a href="dn_00.htm" class="menuitem">Rejon</a>
+                <a href="dn_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="dn_02.htm" class="menuitem mFocus">Tryby pracy</a>
+                <a href="dn_03.htm" class="menuitem">Instrukcja obsługi ST1.1</a>
+                <a href="dn_04.htm" class="menuitem">Czujniki</a>
+				<a href="dn_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-07-01</div>
+            <a id="L0"></a>
+            <h1>TRYBY PRACY</h1>
+            <ul class="instrukcjaspis">
+                <li><a href="#L1">Klatka DuoNawrotna</a></li>
+                <li><a href="#L2">Śruba</a></li>
+                <li><a href="#L3">Samotoki, liniały, kantowniki</a></li>
+                <li><a href="#L4">Pompy zbijacza zgorzeliny</a></li>
+            </ul>
+            <br><a id="L1"></a>
+            <hr>
+            <h1>Klatka DuoNawrotna<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+            <table>
+                <tr>
+                    <th>Tryb RĘCZNY</th>
+                    <th>Tryb AUTO</th>
+                </tr>
+                <tr style="text-align: justify; vertical-align: top">
+                    <td style="width: 50%">
+                        <p> Obroty zadane klatki są zależne od wyhylenia manipulatora (pulpit środkowy: ST1.1KS [43]).
+                            Aby możliwe było ręczne sterowanie z manipulatora przełącznik [49] musi być w pozycji DN
+                            (sygnalizowane zółtą lampką [50]).
+                        </p>
+                    </td>
+                    <td>
+                        <p>Dla każdego przepustu Operator wpisuje obroty zadane chwytu, walcowania i wyrzutu. Na
+                            podstawie
+                            sygnałów z fotokomórek Fz1.20.03 i Fz1.20.04 układ określa pozycję sztuki i podaje
+                            referencje
+                            napędu głównego DN.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <br><a id="L2"></a>
+            <hr>
+            <h1>
+                </a>Śruba<a href="#L0"><img style="float:right;" src="img/return.png"></a>
+            </h1>
+
+            <table>
+                <tr>
+                    <th>Tryb RĘCZNY</th>
+                    <th>Tryb AUTO</th>
+                </tr>
+                <tr style="text-align: justify; vertical-align: top">
+                    <td style="width: 50%">
+                        <p> Obroty zadane klatki są zależne od wyhylenia manipulatora (pulpit środkowy: ST1.1KS [43]).
+                            Aby możliwe było ręczne sterowanie z manipulatora przełącznik [49] musi być w pozycji śruba
+                            1.22
+                            (sygnalizowane zieloną lampką [50a]).
+                        </p>
+
+                    </td>
+                    <td>
+                        <p>Dla każdego przepustu Operator wpisuje pozycję zadaną śruby. Po zmianie przepustu sterownik
+                            pozycjonuje śrubę na wartości zadanej. Po rozprzęgnięciu mechanicznym lub po załączeniu
+                            układu wymagane jest wycechowanie śruby na wartości 300. Na mostku zabudowany został
+                            mini-semafor wskazujący możliwość wjazdu kęsem w walce:</p>
+                        <ul>
+                            <li>CZERWONY - zakaz wprowadzania sztuki </li>
+                            <li>ŻÓŁTY - trwa pozycjonowanie, czekaj</li>
+                            <li>ZIELONY - śruba na pozycji zadanej, DN na obrotach chwytu, można wprowadzać sztukę</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <br><a id="L3"></a>
+            <hr>
+            <h1>Samotoki, liniały, kantowniki<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+            <table>
+                <tr>
+                    <th>Tryb RĘCZNY</th>
+                    <th>Tryb AUTO</th>
+                </tr>
+                <tr style="text-align: justify; vertical-align: top">
+                    <td style="width: 50%">
+                        <p>Obroty zadane samotoków są zależne od wyhylenia manipulatorów , jazda liniałów również zależy
+                            od wyhylenia manipulatora. Podnoszenie/opuszczanie kantowników 1.12 i 1.14 sterowane jest z
+                            pedała. Przełącznikiem [46] dokonujemy wyboru:</p>
+                        <ul>
+                            <li>tylko kantownik przed DN 1.12</li>
+                            <li>oba kantowniki zmieniają położenie po wciśnięciu pedała</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <p>Opis AUTO jest zawarty w <a href="dn_03.htm#L4">instrukcji obsługi ST1.1</a>, jednak na
+                            etapie
+                            rozruchu nie było chęci technologów do uruchomienia automatyki. Urządzenia pracują zatem
+                            jedynie w trybie ręcznym.</p>
+                        <p>Możliwe jest tylko włączenie (niezależne) doprowadzania i odprowadzania. Doprowadzanie
+                            pozwala samoczynnie podprowadzić kęs do połowy liniałów przed pierwszym przepustem.
+                            Odprowadzanie samoczynnie wyjeżdża sztuką na samotok 2.02 po zakończeniu ostatniego
+                            przepustu.</p>
+                    </td>
+                </tr>
+            </table>
+            <br><a id="L4"></a>
+            <hr>
+            <h1>Pompy zbijacza zgorzeliny<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+            <img class="foto" src="img/dn_i11.png">
+            <div style="text-align:  center;">Rys.1 Przełącznik wyboru pomp. Przełącznik załączania pomp.</div><br>
+            <table>
+                <tr>
+                    <th>Praca pomp - Tryb RĘCZNY</th>
+                    <th>Praca pomp - Tryb AUTO</th>
+                </tr>
+                <tr style="text-align: justify; vertical-align: top">
+                    <td style="width: 50%">
+                        <ol>
+                            <li>Przełącznik załączania pomp ustawiamy na Wył.</li>
+                            <li>Na przełączniku wyboru pomp ustawiamy:</li>
+                            <ul>
+                                <li>P1 - wybór pompy P1 do pracy.</li>
+                                <li>P2 - wybór pompy P2 do pracy.</li>
+                                <li>P1+2 - wybór obu pomp do jednoczesnej pracy.</li>
+                            </ul>
+                            <li>Przełącznik załączania pomp ustawiamy na Zał.</li>
+                        </ol>
+                    </td>
+                    <td>
+                        <ol>
+                            <li>Przełącznik załączania pomp ustawiamy na Wył.</li>
+                            <li>Na przełączniku wyboru pomp ustawiamy:</li>
+                            <ul>
+                                <li>P1 - wybór pompy P1 do pracy.</li>
+                                <li>P2 - wybór pompy P2 do pracy.</li>
+                            </ul>
+                            <li>Przełącznik załączania pomp ustawiamy na Zał. Wybrana pompa zostaje załączona.</li>
+                            <li>Przełącznik wyboru pomp ustawiamy na P1+2. To powoduje włączenie trybu automatyki pomp.
+                            </li>
+                        </ol>
+                        <p>Jeśli pracująca pompa ulegnie awarii lub wybiciu, samoczynnie załączy się rezerwowa pompa.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p>Niezależnie od trybu pracy pomp zbijacz pracuje w cyklu:</p>
+                        <ul>
+                            <li>Przy spadku poziomu wody poniżej czujnika 3 załączane jest dobijanie do zbiornika.</li>
+                            <li>Przy wzroście poziomu wody powyżej czujnika 4 układ przełączany jest na przelew.</li>
+                        </ul>
+                        <p>Poza tym działają blokady:</p>
+                        <ul>
+                            <li>Przy wzroście poziomu wody powyżej czujnika 5 pompy są wyłączane.</li>
+                            <li>Przy poziomie wody poniżej czujnika 2 dysza zbijacza nie jest sterowana gdy kęs znajdzie
+                                się w zbijaczu.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

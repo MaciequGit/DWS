@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Pomoc DWS</title>
+	<meta name="description"
+		content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+	<div id="container">
+		<div id="menuL">
+			<img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+			<div id="zegar">12:00:00</div>
+			<div id="rejon"><span>DuoNawrotna</span></div><br>
+			<div id="linkiRejonu">
+				<a href="dn_00.htm" class="menuitem">Rejon</a>
+				<a href="dn_01.htm" class="menuitem mFocus">Konfiguracja PLC</a>
+				<a href="dn_02.htm" class="menuitem">Tryby pracy</a>
+				<a href="dn_03.htm" class="menuitem">Instrukcja obsługi ST1.1</a>
+				<a href="dn_04.htm" class="menuitem">Czujniki</a>
+				<a href="dn_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+			</div>
+		</div>
+		<div id="menuLpom"></div>
+		<div id="content">
+			<img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+			<div id="mac">Mac aktualizacja:2020-05-13</div>
+			<h1>KONFIGURACJA STEROWNIKA PLC</h1>
+			<p>Po modernizacji w 2019 roku rejon załadunku sterowany jest ze sterownika 0PLC3. Sterownik znajduje się na
+				stycznikowni budynku B2. 0PLC3 posiada konfigurację rozproszoną opartą na sieci Profibus DP. Jest ona
+				następująca:
+			<p>
+			<table>
+				<tr>
+					<th>Element</th>
+					<th>Lokalizacja</th>
+					<th>Opis wejść i wyjść</th>
+				</tr>
+				<tr>
+					<td>Master</td>
+					<td>Stycznikownia B1 7m5</td>
+					<td>
+						Nie posiada sygnałów we/wy, jedynie liczniki dla impulsatorów DN, śruby i liniałów. Z płyty
+						zasilane są slave’y 1..5 (24VDC) a także stacja operatorska
+						na mostku ST1.1.
+					</td>
+				</tr>
+
+				<tr>
+					<td>Slave1</td>
+					<td>Mostek ST1.1</td>
+					<td>
+						Sygnały we/wy z nowych pulpitów ST1.1. Wejścia analogowe z joysticków (-10..0..+10V).
+						Minisemafor.
+					</td>
+				</tr>
+				<tr>
+					<td>Slave2</td>
+					<td>Stycznikownia B1 7m5 1SGA</td>
+					<td>
+						<ul>
+							<li>Sygnały logiki szafy 1MT</li>
+							<li>Sygnały logiki dla GST-5</li>
+							<li>Sygnały technoogiczne smarowania 1SGA</li>
+							<li>Zadawanie analogowe (-10..+10V) samotoków i liniałów</li>
+							<li>Zadawanie analogowe (-10..+10V) DN i śruby</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>Slave3</td>
+					<td>Stycznikownia B1 7m5 1AC2</td>
+					<td>
+						<ul>
+							<li>Drogówka śruby</li>
+							<li>Drogówki liniałów</li>
+							<li>Fotokomórki rejonu DN (również zasilanie 24VDC dla Fz: 1,2,5 i 6 )</li>
+							<li>Zasilanie i odczyt czujników temperatury silników DC (4..20mA) </li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>Slave4</td>
+					<td>Stycznikownia B1 7m5 1.20A1</td>
+					<td>
+						Wejścia i wyjścia cyfrowe procesów technologicznych i elektrycznych DN. Logika będąca
+						odpowiednikiem płyt przekaźnikowych szafy analogowej.
+					</td>
+				</tr>
+				<tr>
+					<td>Slave5</td>
+					<td>Stycznikownia B1 7m5 1.20A2</td>
+					<td>
+						Pozostałe wejścia cyfrowe DN. Wyjścia cyfrowe obsługują synoptykę DN.
+
+					</td>
+				</tr>
+				<tr>
+					<td>Slave6</td>
+					<td>Stycznikownia 1S1.2 </td>
+					<td>
+						<ul>
+							<li>Obsługa kantowników</li>
+							<li>Sygnały z szaf samotoków (mentor, ansaldo)</li>
+							<li>Sygnały z szaf liniałów (mentor) </li>
+							<li>Sygnały z szafy śruby (mentor) </li>
+							<li>Sygnały trafo z 1S5</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>Slave7</td>
+					<td>Stycznikownia 90S1</td>
+					<td>
+						Sygnały zbijacza zgorzeliny:
+						<ul>
+							<li>Poziomy</li>
+							<li>Sterowanie pomp, przelewów</li>
+							<li>Synoptyka i sterowanie z szafki </li>
+							<li>Pomiar analogowy prądów pomp (4..20mA)</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>Kantownik 1.12</td>
+					<td>Stycznikownia 1S1.2</td>
+					<td>
+						UnidriveSP kantownik przed DN
+					</td>
+				</tr>
+				<tr>
+					<td>Kantownik 1.14</td>
+					<td>Stycznikownia 1S1.2</td>
+					<td>
+						UnidriveSP kantownik za DN
+					</td>
+				</tr>
+				<tr>
+					<td>1PC11</td>
+					<td>Stycznikownia B1 7m5</td>
+					<td>
+						UnidriveSP wentylatora chłodzenia silników DC (liniały i samotoki)
+					</td>
+				</tr>
+				<tr>
+					<td>Samotok 1.02 m9..12</td>
+					<td>Szafa 1PC02.03  0m</td>
+					<td>
+						MentoryMP samotok 1.02 silniki 9,10,11,12(rezerwa)
+					</td>
+				</tr>
+
+
+
+			</table>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</body>
+
+</html>

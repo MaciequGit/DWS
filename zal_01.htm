@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Pomoc DWS</title>
+	<meta name="description"
+		content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+	<div id="container">
+		<div id="menuL">
+			<img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+			<div id="zegar">12:00:00</div>
+			<div id="rejon"><span>Załadunek</span></div><br>
+			<div id="linkiRejonu">
+				<a href="zal_00.htm" class="menuitem">Rejon</a>
+				<a href="zal_01.htm" class="menuitem mFocus">Konfiguracja PLC</a>
+				<a href="zal_02.htm" class="menuitem">Tryby pracy</a>
+				<a href="zal_03.htm" class="menuitem">Instrukcja obsługi ST0.3</a>
+				<a href="zal_04.htm" class="menuitem">Czujniki</a>
+				<a href="zal_05.htm" class="menuitem">Obsługa URE</a>
+				<a href="zal_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+			</div>
+		</div>
+		<div id="menuLpom"></div>
+		<div id="content">
+			<img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+			<div id="mac">Mac aktualizacja:2020-05-13</div>
+			<h1>KONFIGURACJA STEROWNIKA PLC</h1>
+			<p>Po modernizacji w 2019 roku rejon załadunku sterowany jest ze sterownika 0PLC3. Sterownik znajduje się na
+				stycznikowni budynku B2. 0PLC3 posiada konfigurację rozproszoną opartą na sieci Profibus DP. Jest ona
+				następująca:
+			<p>
+			<table>
+				<tr>
+					<th>Element</th>
+					<th>Lokalizacja</th>
+					<th>Opis wejść i wyjść</th>
+				</tr>
+				<tr>
+					<td>Master</td>
+					<td>B2 0S4</td>
+					<td>Nie posiada sygnałów we/wy. Z płyty zasilane są wszystkie slave’y (24VDC) a także stacje operatorskie
+						na mostkach ST0.1 oraz ST0.3.</td>
+				</tr>
+
+				<tr>
+					<td>Slave1</td>
+					<td>B2 0S2p10</td>
+					<td>Wejścia cyfrowe czujników rejonu wagi (B01..B13), pulpitu mostka ST0.1, sygnał wyłącznika awaryjnego
+						rejonu (5K1 z 005s3). Wyjścia cyfrowe sterujące zderzakami w rejonie drzwi załadowczych pieców.</td>
+				</tr>
+				<tr>
+					<td>Slave2</td>
+					<td>pulpit ST0.3</td>
+					<td>Wejścia cyfrowe oraz sygnalizacje pulpitu mostka, czujniki materiału między piecami (B15 i B16),
+						sygnały cyfrowe ze skanerów laserowych (niewykorzystane).</td>
+				</tr>
+
+
+				<tr>
+					<td>Slave3</td>
+					<td>B2 0S1p12</td>
+					<td>Wejścia cyfrowe czujników rejonu rusztów B034..B46, zadajniki (z ST0.1) i drogówki przesuwaczy
+						linowych rusztów. Wyjścia cyfrowe sygnalizujące optycznie/dźwiękowo ruch przesuwacza na hali. Wejścia
+						analogowe (4..20mA) odległości kęsa od osi samotoku przy wózkach 2,3,4 (na obu rusztach).</td>
+				</tr>
+				<tr>
+					<td>Disomat</td>
+					<td>B2</td>
+					<td>PLC odczytuje na bieżąco ciężar kęsów na wadze (po profibusie). Jest umieszczony w szafce na
+						zewnętrznej ścianie B2.</td>
+				</tr>
+				<tr>
+					<td>PC skanery</td>
+					<td>B2 0S4</td>
+					<td>Skanery z załadunku pieców są podpięte poprzez Ethernet z komputerem obliczeniowym na B2 (poniżej
+						komputera diagnostycznego). Ten obliczoną pozycję przekazuje po profibusie do PLC.</td>
+				</tr>
+				<td>Napędy</td>
+				<td>B2</td>
+				<td>Wszystkie samotoki oraz wózki manipulatorów są napędzane Unidrive’ami M. Przesuwacze linowe napędzają
+					Mentory MP.</td>
+				</tr>
+				<td>Czujniki</td>
+				<td>hala</td>
+				<td>Po profibusie przyłączone są dalmierze dalekiego zasięgu oraz enkodery pozycji rzeczywistej przesuwaczy
+					linowych.</td>
+				</tr>
+			</table>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</body>
+
+</html>

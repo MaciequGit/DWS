@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>Załadunek</span></div><br>
+            <div id="linkiRejonu">
+                <a href="zal_00.htm" class="menuitem">Rejon</a>
+                <a href="zal_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="zal_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="zal_03.htm" class="menuitem">Instrukcja obsługi ST0.3</a>
+                <a href="zal_04.htm" class="menuitem">Czujniki</a>
+                <a href="zal_05.htm" class="menuitem mFocus">Obsługa URE</a>
+				<a href="zal_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-07-06</div>
+            <a id="L0"></a></a>
+            <h1>Obsługa URE</h1>
+            <br>
+            <ol class="instrukcjaspis">
+                <li><a href="#L1">Wizualizacja</a></li>
+                <li><a href="#L2">Sposób wyboru wózków. Wyłączenie uszkodzonych wózków</a></li>
+            </ol>
+            <br>
+            <hr>
+            <ol class="instrukcjapkt">
+                <li><a id="L1"></a>Wizualizacja</a><a href="#L0"><img style="float:right;" src="img/return.png"></a>
+                </li>
+                <p>Na wizualizacji uruchomionej na nastawni znajduje się wydzielona strona diagnostyczna rejonu
+                    załadunku:</p>
+                <img class="foto" src="img/zal_i5.png">
+                <p>Widoczny jest układ urządzeń załadunku widoczny "z lotu ptaka" oraz stan urządzeń:
+                <ol>
+                    <li>Czujniki zamontowane przy samotoku wzdłuż rusztów, na wadze oraz przed piecami. Czujniki
+                        wskazują obecność kęsa lub odległość do kęsa (podana w [cm] od osi samotoku do krawędzi
+                        kęsa).Strzałki wskazują kierunek obrotów rolek samotoku. Zielone wypełnienie symbolizuje
+                        referencje napędów.
+                    </li><br>
+                    <li>Wskaźnik pomocniczy okresu od ostatniej wymiany kardrydży smarujących wózki rusztów. Po wymianie
+                        należy wcisnąć przycisk:"Wymieniono na nowe". <br>
+                        <x> Wskazanie oczywiście nie kontroluje faktycznej ich
+                            wymiany (nie ma takich czujników:)</x>
+                    </li><br>
+                    <li>Otwarcie okienka służącego do wyłączenia z pracy uszkodzonych wózków. Poniżej dokładny opis.
+                    </li><br>
+                    <li>Wskaźnik przebiegu kroków trybu AUTO przy przenoszeniu kęsa z rusztu na samotok. KrA, KrB, KrC
+                        to rejestry które na kolejnych bitach słowa wskazują aktualnie wykonywany krok cyklu. Są to
+                        dokładnie kroki przedstawione w programie PLC w blokach R2Auto, R2AutoB, R2AutoC. <p>Po lewej
+                            stronie wagi są widoczny analogiczny stan dla rusztu 1.</p>
+                    </li><br>
+                    <li>Gdy ostatni kęs z bieżącej warstwy zostanie przełożony na samotok, układ wykrywa dalmierzem
+                        (dalekiego zasięgu) pozycję kolejnej
+                        warstwy. Rusza przesuwaczem linowym i ustawia zęby za warstwą w strefie oznaczonej żółtą farbą.
+                        W tym momencie staje i sygnalizuje gotowość do podsunięcia kolejnej warstwy wsadu w pobliże
+                        samotoku migającą żółtą lampką na mostku ST0.3. Jest to widoczne również w tym miejscu na
+                        wizualizacji nastawni. Operator wciska przycisk start półauto potwierdzając, że kontroluje na
+                        monitorze ewentulne skoszenie warstwy. Układ podjeżdża z nową warstwą i kontynuuje podawanie
+                        kęsów.
+                    </li><br>
+                    <li>W tabeli podany jest stan wózków.Podano pozycje zadane dla automatyki, pozycje rzeczywiste,
+                        pozycje krańcowe oraz:
+                        <ul>
+                            <li>Wybazowany. Pozycje (pozioma i pionowa) wózków jest liczona licznikami inkrementalnymi
+                                od puktu referencyjnego czyli bazy. Po wyłączeniu zasilania wózka lub niektórych błędach
+                                układ traci pozycję i jest wtedy niewybazowany. Należy wtedy na mostku ST0.3 przełączyć
+                                tryb pracy rusztów z RECZNY na AUTO. Pierwszym krokiem jest bazowanie wózków (tych które
+                                nie są jescze wybazowane). Polega to na opuszczeniu wózka do krańcówki dolnej (lub jazdy
+                                w tył do krańcówki dla napędu jazdy). Następnie wózek zjeżdża z krańcówki na małej
+                                prędkości i na zboczu tego sygnału licznik się zeruje (czyli bazuje). Gdy wózek jest
+                                daleko od bazy może być konieczne dwukrotne przełączenie trybu pracy.
+                            </li>
+                            <li>Aktywny. Każdy wózek który ma przenosić kęsa musi być ustawiony jako aktywny.W
+                                odpowiedzi napęd wskazuje, że jest Gotowy do pracy. Wózki oznaczone jako NIESPRAWNE lub
+                                wskazujące błąd oczywiście nie będą gotowe (Napęd Gotów). Dodatkowo przy ustawieniu
+                                trybu
+                                AUTO wyboru wózków układ samoczynnie dobiera potrzebne wózki(n.p. kęs 10,30m jest
+                                przenoszony wózkami 1 i 3).Pozostałe wózki są nieaktywne (i niegotowe).
+                            </li>
+                        </ul>
+                    </li><br>
+                    <li>Wskaźnik trybu pracy WAGI i samotoków 0.07 oraz 0.10. W trybie AUTO dodatkowo działą dociąganie
+                        kęsów z rejonów rusztów.
+                    </li><br>
+                    <li>Wskaźnik trybu pracy RUSZTÓW: przesuwacza linowego, wózków i samotoków przy ruszcie.
+                    </li><br>
+                    <li>Miejsce sterowania urządzeniami rejonu załadunku.
+                    </li><br>
+                </ol>
+                <hr>
+                <li><a id="L2"></a>Sposób wyboru wózków. Wyłączenie uszkodzonych wózków</a><a href="#L0"><img
+                            style="float:right;" src="img/return.png"></a></li>
+                <p>Domyślnie przy trybie AUTO pracy rusztów wymagane wózki wybierane są automatycznie:</p>
+                <ul>
+                    <li>dla długości <9m wybrane są W1 i W2</li>
+                    <li>dla długości 9..12m wybrane są W1 i W3</li>
+                    <li>dla długości >12m wybrane są W2 i W4 (gdy któryś jest uszkodzony dobiera się odpowiednio 1,3,4
+                        lub 1,3)</li>
+                </ul>
+                <p>Dwa wózki spokojnie przenoszą najcięższe kęsy. Zbędne w danej chwili wózki nie zużywają się. To
+                    najlepszy tryb w 99% przypadków. Ręczny wybór wózków ma sens tylko przy bardzo krzywych sztukach.
+                </p>
+                <p>Czasem któryś z wózków odmawia posłuszeństwa. Wtedy możemy go oznaczyć jako NIESPRAWNY i być może
+                    załadujemy resztę kęsów z danego rusztu. <br>
+                    <x>ALE UWAGA: można go tak oznaczyć TYLKO gdy jest schowany
+                        w ruszcie w pozycji dolnej. Inaczej przenoszony kęś go uszkodzi !!!</x>
+                </p>
+                <p>To, czy można ładować wsad bez wózka zależy od sytuacji. Odrobina wyobraźni i: </p>
+                <ul>
+                    <li>Klocki do 9m przenosimy W1 i W2 (W3 i W4 mogą być NIESPRAWNE)</li>
+                    <li>Kęsy 9..12m przenosimy W1 i W3 (W2 i W4 mogą być NIESPRAWNE)</li>
+                    <li>Kęsy >12m dają dużo możliwości. Można to przenieść na wózkach: 1,3 lub 1,4 lub 2,3 lub 2,4.
+                    </li>
+                </ul>
+                <p>Teraz obsługa. Wciskamy przycisk:"Wybór wózków"</p>
+                <img class="foto" src="img/zal_i7.png">
+                <p>
+                    <x>Czytamy z atencją bo jest tu wszystko co wiedzieć trzeba. </x>......Dalej
+                </p>
+                <img class="foto" src="img/zal_i6.png">
+                <p>Chyba wszystko jasne. Gdy wózek zostanie naprawiony, należy go ustawić jako SPRAWNY. Jeśli jest
+                    niewybazowany trzeba je wykonać (patrz wyżej) bo układ w AUTO nie ruszy.</p>
+                <hr>
+
+
+            </ol>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

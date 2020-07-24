@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>DuoNawrotna</span></div><br>
+            <div id="linkiRejonu">
+                <a href="dn_00.htm" class="menuitem">Rejon</a>
+                <a href="dn_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="dn_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="dn_03.htm" class="menuitem">Instrukcja obsługi ST1.1</a>
+                <a href="dn_04.htm" class="menuitem">Czujniki</a>
+				<a href="dn_06.htm" class="menuitem mFocus">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-07-21</div>
+            <h1>Program PLC</h1>
+            <p>Wszystkie programy PLC znajdują się na komputerze Nastawnia w lokalizacji: "D:\_Programy_PLC_Nastawnia"
+            </p>
+            <p>Program PLC dla rejonu DuoNawrotnej znajduje się w lokalizacji: <a
+                    href="D:\_Programy_PLC_Nastawnia\1PLC1_DN" target="_blank"> "D:\_Programy_PLC_Nastawnia\1PLC1_DN"</a>
+            </p>
+            <p>Wszystkie pliki są w formacie PDF. Zestawienie plików:
+            <table>
+                <tr>
+                    <th>PLIK</th>
+                    <th>OPIS</th>
+                </tr>
+                <tr>
+                    <td>0PLC1_Zmienne</td>
+                    <td>Lista zmiennych.</td>
+                </tr>
+
+                <tr>
+                    <td>0PLC1_Cross</td>
+                    <td>Cross-reference czyli spis w którym dla każdej zmiennej są wyszczególnione wszystkie
+                        miejsca w programie gdzie zmiennna jest używana.</td>
+                </tr>
+                <tr>
+                    <td>ST_blocks</td>
+                    <td>Gross programu jest napisana w laderze (schemacie drabinkowym), ale część musi być w
+                        języku&nbspST. W tym pliku są zawarte wszystkie bloki ST.</td>
+                </tr>
+                <tr>
+                    <td> <a href="D:\_Programy_PLC_Nastawnia\1PLC1_DN\1PLC1_Suma.pdf" target="_blank">0PLC1_Suma</a>
+                    </td>
+                    <td>W tym ploku znajduje się wszystko opisane powyżej oraz wszystkie bloki drabinkowe.</td>
+                </tr>
+                <tr>
+                    <td>Pozostałe</td>
+                    <td>To bloki drabinkowe. Ich nazwy są takie same jak nazwy bloków LD w programie Proficy.</td>
+                </tr>
+
+            </table>
+            </p>
+            <hr>
+
+            <h1>Schematy elektryczne PLC</h1>
+            <p>Schematy elektryczne PLC znajdują się na komputerze Nastawnia w lokalizacji: "D:\_SchematyPLC"</p>
+            <p>Schematy elektryczne PLC dla rejonu DuoNawrotnej znajdują się w lokalizacji: <a
+                    href="D:\_Schematy_PLC\1PLC1_DN" target="_blank"> "D:\_Schematy_PLC\1PLC1_DN"</a>
+            </p>
+            <hr>
+            <h2> <a href="help_zmienne.htm" target="_blank">Jak szukać zmiennych w programie PLC</a></h2>
+
+
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

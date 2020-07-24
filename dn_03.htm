@@ -1,0 +1,727 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>DuoNawrotna</span></div><br>
+            <div id="linkiRejonu">
+                <a href="dn_00.htm" class="menuitem">Rejon</a>
+                <a href="dn_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="dn_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="dn_03.htm" class="menuitem mFocus">Instrukcja obsługi ST1.1</a>
+                <a href="dn_04.htm" class="menuitem">Czujniki</a>
+				<a href="dn_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-06-30</div>
+            <a id="L0"></a></a>
+            <h1>I N S T R U K C J A<br>OBSŁUGI URZĄDZEŃ REJONU<br> KLATKI DUONAWROTNEJ<br> MOSTEK ST1.1<br></h1>
+            <br>
+            <p> Spis treści: </p>
+            <ol class="instrukcjaspis">
+                <li><a href="#L1">Uwagi ogólne</a></li>
+                <li><a href="#L2">Widok mostka ST1.1</a></li>
+                <li><a href="#L3">Opis pulpitów sterujących</a>
+                <li><a href="#L4">Tryb pracy automatycznej</a></li>
+                <li><a href="#L5">Obsługa stacji roboczej SOST1.1</a></li>
+            </ol>
+            <br>
+            <hr>
+            <ol class="instrukcjapkt">
+                <li><a id="L1"></a>Uwagi ogólne</a><a href="#L0"><img style="float:right;" src="img/return.png"></a>
+                </li>
+                <p>W ramach modernizacji zostało zmienione sterowanie i obsługa następujących urządzeń:</p>
+                <ul style="	text-align: left">
+                    <li>Klatka DN 1.20</li>
+                    <li>Liniał lewy 1.10</li>
+                    <li>Liniał lewy 1.08</li>
+                    <li>Śruba 1.22</li>
+                    <li>Samotoki 1.02</li>
+                    <li>Samotoki 1.04</li>
+                    <li>Samotoki 1.32</li>
+                    <li>Samotoki 1.34</li>
+                    <li>Kantownik hakowy przed DN 1.12</li>
+                    <li>Kantownik hakowy za DN 1.14</li>
+                </ul>
+                <p>Obsługa pozostałych urządzeń rejonu klatki duonawrotnej pozostaje bez zmian.</p>
+                <hr>
+                <li><a id="L2"></a>Widok mostka ST1.1</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a></li>
+                <p>W ramach modernizacji na mostku sterowniczym ST1.1 wymieniono dwa główne pulpity sterownicze oraz
+                    zmieniono stację operatorską. Stacja została wyposażona w nową wizualizację rejonu DN. Po zmianach
+                    widok mostka przedstawia się następująco:</p>
+                <img class="foto" src="img/dn_i1.png">
+                <div style="text-align: center;">Rys.1 Widok mostka ST1.1</div><br>
+                <hr>
+                <li><a id="L3"></a>Opis pulpitów sterujących</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a></li>
+                <p>Na mostku ST1.1 zostały wymieniowe dwa pulpity (środkowy oraz prawy). Pulpity te wyposażono w nowy
+                    osprzęt służący do sterowania urządzeniami.</p>
+                <img class="foto" src="img/dn_i2.png">
+                <div style="text-align: center;">Rys.2 Widok pulpitu środkowego ST1.1KS</div><br>
+                <table>
+                    <tr>
+                        <th>Oznaczenie</th>
+                        <th>Opis ST1.1KS</th>
+                        <th>Typ</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Wyłączenie awaryjne DN</td>
+                        <td>wyłącznik awaryjny</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Zazbrojenie wyłącznika awaryjnego </td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Próba lampek</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Rozsprzęganie zegara śruby</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Wybór pierścienia zbijacza zgorzeliny</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td>Manipulator liniału lewego i samotoków</td>
+                        <td>manipulator</td>
+                    </tr>
+                    <tr>
+                        <td>43</td>
+                        <td>Manipulator DN lub śruby</td>
+                        <td>manipulator</td>
+                    </tr>
+                    <tr>
+                        <td>45</td>
+                        <td>Wyjazd liniału lewego na demontaż</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>49</td>
+                        <td>Wybór narzędzia dla manipulatora 43</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>50a</td>
+                        <td>Wybrane narzędzie: śruba</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td>Wybrane narzędzie: napęd DN</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>59</td>
+                        <td>Stan fotokomórki za klatką DN Fz1.20.4</td>
+                        <td>lampka</td>
+                    </tr>
+                </table><br><br><br>
+                <img class="foto" src="img/dn_i3.png">
+                <div style="text-align:  center;">Rys.3 Widok pulpitu prawego ST1.1KP</div><br>
+                <table>
+                    <tr>
+                        <th>Oznaczenie</th>
+                        <th>Opis ST1.1KP</th>
+                        <th>Typ</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Zdmuchiwanie pary: załączenie</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Zdmuchiwanie pary: wyłączenie</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Chłodzenie walców wodą </td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Kantownik za klatką DN 1.14: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Kantownik za klatką DN 1.14: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Samotok wybiegowy za DN 1.34: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Samotok wybiegowy za DN 1.34: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Samotok roboczy za DN 1.32: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Samotok roboczy za DN 1.32: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>Liniał lewy 1.10: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>Liniał lewy 1.10: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Śruba 1.22: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Śruba 1.22: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>Liniał prawy 1.08: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>Liniał prawy 1.08: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>Kantownik przed klatką DN 1.12: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>Kantownik przed klatką DN 1.12: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>Samotok wybiegowy przed DN 1.02: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>Samotok wybiegowy przed DN 1.02: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>Samotok roboczy przed DN 1.04: stan napędu</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>Samotok roboczy przed DN 1.04: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>Samotok roboczy przed DN 1.04: załączenie/wyłączenie</td>
+                        <td>przełącznik z kluczykiem</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td>Nie używany</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>Samotoki przed DN: wybór trybu pracy</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td>Liniały 1.08 i 1.10: wybór trybu pracy</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td>Samotoki za DN: wybór trybu pracy</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>Śruba 1.22: wybór trybu pracy</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>34</td>
+                        <td>Klatka DN: wybór trybu pracy</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td>Następny przepust</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td>Poprzedni przepust</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>37</td>
+                        <td>Kantowanie zakończone</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>38</td>
+                        <td>Próba lampek</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td>Korekcja nastawy śruby 1.22</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td>Stała prędkość klatki DN</td>
+                        <td>manipulator</td>
+                    </tr>
+                    <tr>
+                        <td>44</td>
+                        <td>Wyjazd liniału prawego na demontaż</td>
+                        <td>przycisk</td>
+                    </tr>
+                    <tr>
+                        <td>46</td>
+                        <td>Wybór kantownika hakowego</td>
+                        <td>przełącznik</td>
+                    </tr>
+                    <tr>
+                        <td>47</td>
+                        <td>Wyłączenie awaryjne liniałów</td>
+                        <td>wyłącznik awaryjny</td>
+                    </tr>
+                    <tr>
+                        <td>48</td>
+                        <td>Wyłączenie awaryjne śruby</td>
+                        <td>wyłącznik awaryjny</td>
+                    </tr>
+                    <tr>
+                        <td>51</td>
+                        <td>Nie używany</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>52</td>
+                        <td>Samotoki przed DN: tryb pracy AUTO</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>53</td>
+                        <td>Liniały 1.08 i 1.10: tryb pracy AUTO</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>54</td>
+                        <td>Samotoki za DN: tryb pracy AUTO</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>55</td>
+                        <td>Śruba 1.22: tryb pracy AUTO</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>56</td>
+                        <td>latka DN: tryb pracy AUTO</td>
+                        <td>lampka</td>
+                    </tr>
+                    <tr>
+                        <td>57</td>
+                        <td>Sekwencja AUTO: załączenie</td>
+                        <td>przycisk podświetlany</td>
+                    </tr>
+                    <tr>
+                        <td>58</td>
+                        <td>Sekwencja AUTO: wyłączenie</td>
+                        <td>przycisk </td>
+                    </tr>
+                </table>
+                <p>Funkcje osprzętu na pulpitach pozostały w dużej części analogiczne do używanych przez Operatorów
+                    dotychczas. Uszeregowano przełączniki trybu pracy (wraz ze wskazaniem trybu pracy na lampkach). Bez
+                    zmian pozostała ich obsługa: 0-STOP, praca ręczna, praca AUTO. Lamka świecąc wskazuje tryb AUTO;
+                    migając – przejście w tryb ręczny poprzez wychylenie manipulatora napędu. Oznacza to priorytet
+                    sterowania ręcznego. Stan ten kasujemy poprzez przełączenie trybu pracy na ręczny (i ewentualnie
+                    ponownie na AUTO). Manipulatory klatki DN i śruby zostały zintegrowane w jeden umieszczony w taki
+                    sposób by był dostępny dla obu Operatorów. Wyboru obsługiwanego narzędzia(urządzenia) należy dokonać
+                    przełącznikiem nr 49. Na prawym pulpicie zebrano także blok przełączników z kluczykami służących do
+                    załączania/wyłączania urządzeń (12,14,16,18,20,22,24,26,28). Zastępują one wyłączniki umieszczone
+                    dotychczas na skrzynce umieszczonej na lewej ścianie mostka.
+                    Oto opis ich działania:
+                </p>
+                <table>
+                    <tr>
+                        <th>Stan przełącznika</th>
+                        <th>Opis</th>
+                    </tr>
+                    <tr>
+                        <td>Przekręcenie w lewo(możliwe wyjęcie kluczyka)</td>
+                        <td>Wyłączenie napędu</td>
+                    </tr>
+                    <tr>
+                        <td> Przekręcenie w prawo</td>
+                        <td>Załączenie napędu</td>
+                    </tr>
+                </table>
+                <p>Stan napędów sygnalizowany na lampkach(11,13,15,17,19,21,23,25,27):</p>
+                <table>
+                    <tr>
+                        <th>Stan przełącznika</th>
+                        <th>Stan lampki</th>
+                        <th>Opis</th>
+                    </tr>
+                    <tr>
+                        <td>Przekręcony w lewo</td>
+                        <td>Nie świeci</td>
+                        <td>Napęd wyłączony, brak gotowości do załączenia</td>
+                    </tr>
+                    <tr>
+                        <td>Przekręcony w lewo</td>
+                        <td>Świeci</td>
+                        <td>Napęd wyłączony, gotowy do załączenia</td>
+                    </tr>
+                    <tr>
+                        <td>Przekręcony w prawo</td>
+                        <td>Nie świeci</td>
+                        <td>Napęd załączony i sprawny</td>
+                    </tr>
+                    <tr>
+                        <td>Przekręcony w prawo</td>
+                        <td>Miga (1Hz)</td>
+                        <td>Napęd załączony,
+                            w stanie awaryjnym - nie jest gotowy do pracy</td>
+                    </tr>
+
+                </table>
+                <p>Na pulpicie prawym znajdują się wyłączniki awaryjne: liniałów (47) oraz śruby (48). Na pulpicie
+                    środkowym natomiast znajdują się: wyłącznik awaryjny klatki głównej i kantowników (1) ; obok
+                    przycisk zazbrajania wyłącznika awaryjnego klatki głównej i kantowników (2). Zazbrojenie wymaga
+                    <x>dłuższego</x> wciśnięcia przycisku (ok. 5sekund).</p>
+                <hr>
+
+                <li><a id="L4"></a>Tryb pracy automatycznej</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a></li>
+                <p>Tryb umożliwia wypracowanie wartości zadanych dla napędów rejonu DN na podstawie nastaw wpisanych
+                    przez Operatora na stacji SOST1.1. </p>
+
+
+                <ul style="	text-align: left">
+                    <li><b>Automatyka klatki DN</b>
+                        <p>Dla każdego przepustu Operator wpisuje obroty zadane chwytu, walcowania i wyrzutu. Na
+                            podstawie sygnałów z fotokomórek układ określa pozycję sztuki i podaje referencje napędu
+                            głównego DN.</p>
+                    </li>
+                    <li><b>Automatyka śruby 1.22</b>
+                        <p>Dla każdego przepustu Operator wpisuje pozycję zadaną śruby. Po zmianie przepustu sterownik
+                            pozycjonuje śrubę na wartości zadanej. Po rozprzęgnięciu mechanicznym lub po załączeniu
+                            układu wymagane jest wycechowanie śruby na wartości 300.</p>
+                    </li>
+                    <li><b>Automatyka liniałów 1.08, 1.10 (obejmuje również kantowniki 1.12, 1.14)</b>
+                        <p>Jest to pełna automatyka rejonu. Każdy przepust jest podzielony na 6 kroków, a każdy
+                            z nich zawiera nastawę liniałów. W ramach każdego kroku wykonywana jest sekwencja ruchów
+                            zgodna z algorytmem. W przypadku gdy w kolejnym kroku Operator nie chce zmieniać pozycji
+                            liniałów wpisuje nastawy takie jak w poprzednim kroku.
+                        </p>
+                    </li>
+                    <p>Algorytm działania :</p>
+
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Samotoki</th>
+                            <th>Liniały</th>
+                            <th>Kantowniki</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">KROK 1 (tylko dla przepustu 1)</td>
+                            <td></td>
+                            <td>Pozycja do wjazdu sztuki między liniały(szeroko)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Dojazd ręczny lub doprowadzanie samotoków przed DN. Operator może przekantować sztukę
+                                jeśli z pieca wyjechała w pozycji „poziomej”. Potwierdza poprawne położenie sztuki
+                                przyciskiem – kantowanie zakończone.<br>(zmiana K1->2)</td>
+                            <td></td>
+                            <td>Sprowadzenie kantownika przed do pozycji DÓŁ</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">KROK 1 Przep>1 </td>
+                            <td rowspan="2">STOP</td>
+                            <td>Prawy liniał odjazd by wrócić kantownikiem w pozycję DÓŁ</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>Sprowadzenie kantownika przed do pozycji DÓŁ</td>
+                        </tr>
+                        <tr>
+                            <td>KROK 2</td>
+                            <td>STOP</td>
+                            <td>Uchwycenie ciasne sztuki. Przygotowanie do kantowania.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>KROK 3</td>
+                            <td>STOP</td>
+                            <td>Odjazd liniału lewego. Kantowanie. Potwierdzenie przyciskiem – kantowanie zakończone.
+                                <br>(zmiana K2->3)
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>Samotoki</th>
+                            <th>Liniały</th>
+                            <th>Kantowniki</th>
+                        </tr>
+                        <tr>
+                            <td>KROK 4</td>
+                            <td>STOP</td>
+                            <td>Ustawienie sztuki na wykrój. Gotowy do wjazdu w DN. <br>(K3->4)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">KROK 5</td>
+                            <td>Ruszają samotoki przed i za. Wjazd w DN </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Odjazd od sztuki by po przewalcowaniu nie uderzyła w liniał po drugiej stronie DN. Po
+                                przewalcowaniu K5->6.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>KROK 6</td>
+                            <td>Zatrzymanie samotoków. </td>
+                            <td>Ewentualny przejazd liniałów ze sztuką w wygodne miejsce dla Kroku1 następnego
+                                przepustu.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">KROK 6 (tylko dla przepustu ostatniego)</td>
+                            <td>Zatrzymanie samotoków. </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Ewentualny przejazd liniałów ze sztuką w pozycję do odprowadzenia.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Odjazd ręczny lub odprowadzanie</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <li><b>Automatyka samotoków 1.02, 1.04, 1.32, 1.34</b>
+                        <p>Na podstawie podanych nadprędkości i obrotów DN układ wylicza referencje (dobiera prędkość)
+                            samotoków. Jest preferowane włączenie automatyki samotoków wraz z AUTO liniałów (w
+                            przeciwnym razie trzeba ręcznie wprowadzić sztukę w kroku 5). Dodatkowo samotoki przed DN
+                            posiadają możliwość doprowadzenia sztuki ze zbijacza zgorzeliny do liniałów, natomiast
+                            samotoki za DN posiadają możliwość odprowadzenia sztuki poza rejon DN.
+                        </p>
+                    </li>
+                </ul>
+                <h2>Wymogi i ograniczenia trybu AUTO</h2>
+                <p>
+                    Automatyka klatki DN działa autonomicznie i może być używana niezależnie od trybu pracy innych
+                    urządzeń rejonu DN.
+                    Automatyka śruby 1.22 działa autonomicznie i może być używana niezależnie od trybu pracy innych
+                    urządzeń rejonu DN.
+                    Główna automatyka (liniałów) wykonuje program w oparciu o sygnały z fotokomórek
+                    i enkoderów zwracających pozycję napędów. Do poprawnej pracy wymaga powtarzalnego zachowania
+                    materiału na poszczególnych etapach walcowania. Oznacza to, np. że przejazd kantownika w górę przy
+                    odpowiednim ustawieniu sztuki w liniałach jest traktowany jako wykonane kantowanie. Przebieg podlega
+                    kontroli Operatora, który powinien zareagować gdy cykl technologiczny tego wymaga (zsunięcie sztuki
+                    z kantownika, konieczność podprostowania sztuki itp). Przejęcie sterowania dokonuje się poprzez
+                    wychylenie dowolnego manipulatora.
+                    W takim wypadku należy ręcznie przewalcować do końca bieżącego przepustu. Po zmianie przepustu można
+                    ponownie włączyć tryb AUTO.
+                </p>
+                <h2>Wpisy nastaw</h2>
+                <p>Przed włączeniem trybu automatycznego należy wprowadzić nastawy dla walcowanego profilu. Dokonuje się
+                    tego na stacji SOST1.1 w oknie receptury. Dodatkowo dla napędu śruby można skorygować nastawę w
+                    czasie walcowania przyciskiem b122 umieszczonym na prawym pulpicie. W celu ułatwienia wpisu nastaw
+                    liniałów wprowadzono tryb „nauki pozycji”. Przy wyłączonej automatyce liniałów, Operator włącza go
+                    przyciskiem „Uczenie liniałów” (ekran Receptury); system potwierdza tryb napisem „TRYB UCZENIA
+                    LINIAŁÓW”. Teraz Operator najeżdża liniałami na właściwą pozycję i potwierdza ją przyciskiem
+                    umieszczonym w lewym manipulatorze. Powoduje to wpis aktualnej pozycji jako nastawę dla wybranego
+                    przepustu/kroku oraz przejście do następnego kroku. Umożliwia to szybki wpis nastaw. Aby wyjść z
+                    tego trybu należy przycisk zmiany przepustu w prawym manipulatorze.</p>
+                <h2>Kalibracja napędów</h2>
+                <p>Przed włączeniem automatyki liniałów i śruby należy sprawdzić kalibrację napędów
+                    i w razie potrzeby ją przeprowadzić. Kalibracja śruby polega na skorygowaniu wskazań na stacji
+                    roboczej z pozycją zegara mechanicznego (pozycja 300). Kalibracja liniałów wymaga ustawienia napędów
+                    w linii prawej burty (pozycja 2000). Przyciski kalibracji znajdują się na ekranie „Rejon” stacji
+                    roboczej.
+                </p>
+                <img class="foto" src="img/dn_i4.png">
+                <div style="text-align:  center;">Rys.4 Ustawienie liniałów do kalibracji</div><br>
+                <hr>
+                <li><a id="L5"></a>Obsługa stacji roboczej SOST1.1</a><a href="#L0"><img style="float:right;"
+                            src="img/return.png"></a></li>
+
+                <p>Ekran wizualizacji podzielono na trzy części:</p>
+
+                <ul>
+                    <li>górny pasek tytułowy</li>
+                    <li>obszar roboczy ekranu</li>
+                    <li>dolny pasek przycisków</li>
+                </ul>
+                <p>Górny pasek tytułowy z lewej strony zawiera wskaźnik połączenia ze sterownikiem PLC.
+                    Kolor czerwony wypełnienia oznacza problem z komunikacją na poziomie pomiędzy driverem
+                    komunikacyjnym a sterownikiem, czerwony kolor obwódki oznacza problem komunikacyjny pomiędzy
+                    driverem , a wizualizacją. W obu przypadkach konieczna jest interwencja służb utrzymania ruchu.
+                    Po prawej stronie paska znajduje się przycisk umożliwiający zamknięcie aplikacji (konieczna jest
+                    znajomość hasła - tylko dla osób upoważnionych).
+                    Dolny pasek przycisków umożliwia przełączanie ekranów wizualizacji.
+                    Zasadnicza wizualizacja znajduje się w obszarze roboczym.
+                </p>
+                <p><b>Podstawowy ekran wizualizacji „Rejon”</b> przedstawia stan napędów w rejonie klatki Duo Nawrotnej
+                    stan
+                    automatyki i bieżące wartości zadane i rzeczywiste nastaw:</p>
+                <img class="foto" src="img/dn_i5.png">
+                <p>W centralnej części ekranu przedstawiono stan napędów rejonu: </p>
+                <ul>
+                    <li>kolor szary oznacza, że napęd jest wyłączony</li>
+                    <li>kolor niebieski oznacza, że napęd jest załączony, ale w bezruchu</li>
+                    <li>kolor zielony oznacza, że silnik napędu się kręci</li>
+                    <li>kolor żółty oznacza ostrzeżenie</li>
+                    <li>kolor czerwony oznacza awarię napędu</li>
+                </ul>
+                <p>Kolory zielony i niebieski mogą być jasne (załączona automatyka danego napędu), lub ciemne – napęd
+                    pracuje w trybie ręcznym.
+                    Dodatkowo umieszczenie kursora myszy na symbolu napędu, pokazuje jego nazwę i stan
+                    w okienku w lewym dolnym rogu ekranu.
+                    Dla śruby walca górnego i liniałów, obok symbolu napędu wyświetlane są:
+                </p>
+                <ul>
+                    <li>pozycja zadana (kolor biały)</li>
+                    <li>pozycja rzeczywista (kolor żółty)</li>
+                </ul>
+                <p>U góry ekranu wyświetlane są kolejno </p>
+                <ul>
+                    <li>stan poszczególnych automatyk rejonu</li>
+                    <li>ilość i aktualny numer kroku liniałów (dla automatyki liniałów)</li>
+                    <li>ilość i aktualny numer przepustu (dla wszystkich automatyk)</li>
+                    <li>nazwa profilu wybranego przez operatora (patrz opis ekranu „Receptury”)</li>
+                </ul>
+                <p>W okienku ilości kroków umieszczono dodatkowy wskaźnik „E”, który jest wyświetlany
+                    w chwili gdy aktywny jest „krok extra” liniałów (patrz opis ekranu „Receptury”).
+                </p>
+                <p>Pod symbolami samotoków umieszczono pola, w których operator może wprowadzić współczynniki
+                    nadprędkości samotoków przed i za klatką (w odniesieniu do prędkości klatki DN)
+                    Po lewej i prawej stronie ekranu umieszczono przyciski sterujące doprowadzaniem
+                    i odprowadzaniem pasma z rejonu klatki DN.
+                    Przyciski umożliwiają załączenie AUTOMATYCZNEGO STARTU doprowadzenia
+                    i odprowadzenia pasma – kolor zielony prostokąta na przycisku oznacza, że automatyczny start
+                    doprowadzania/odprowadzania. Dodatkowo zielona strzałka na przycisku oznacza, że aktualnie trwa
+                    doprowadzanie/odprowadzanie.
+                    U dołu ekranu symbolicznie przedstawiono stan fotokomórek rejonu.
+                </p>
+                <p><b>Ekran „Receptury”</b> umożliwia tworzenie zestawów parametrów automatyki rejonu dla różnych
+                    profili
+                    walcowanego materiału, zapis zestawów parametrów na dysk twardy komputera, odczyt wcześnie
+                    zapisanych zestawów i załadowanie wartości do sterownika PLC, oraz kasowanie niepotrzebnych zestawów
+                    z dysku.</p>
+                <img class="foto" src="img/dn_i6.png">
+                <p>Tworzenie nowego zestawu parametrów zaczynamy od wpisania nazwy profilu (zestawu parametrów)
+                    parametrów lewym górnym rogu ekranu. Nazwa ta będzie wyświetlana również na ekranie „Rejon”.
+                    Następnie określamy ilość przepustów i prześwit bazowy pomiędzy walcami.
+                    Każda kolumna tabeli zawiera parametry automatyki dla jednego przepustu. Kolejno są to:
+                </p>
+                <ul>
+                    <li>pozycja śruby</li>
+                    <li>ilość kroków (ruchów) liniałów w danym przepuście</li>
+                    <li>kolejne pozycje (kroki) liniału prawego</li>
+                    <li>kolejne pozycje (kroki) liniału lewego</li>
+                    <li>numer kroku liniałów, w którym następuje kantowanie materiału („0” oznacza brak kantowania w
+                        danym przepuście)</li>
+                    <li>prędkości wprowadzania materiału, walcowania i wyrzutu materiału ( w procentach – wartość „100”
+                        oznacza pełną prędkość)</li>
+                </ul>
+                <p>Poszczególne kroki liniałów w automatyce wykonywane są pomiędzy przepustami (samotoki
+                    i napęd główny klatki stoją). Istnieje możliwość wykonania ostatniego kroku liniału w trakcie
+                    walcowania (np. „poluzowanie” liniałów po wprowadzeniu pasma do walców, żeby nie kaleczyć pasma).
+                    Jeżeli ostatni krok liniałów (w każdym przepuście) ma być wykonywany już w trakcie walcowania pasma
+                    należy aktywować „Krok extra”.
+                    Po wpisaniu danych, zestaw można zapisać na dysk twardy komputera klikając przycisk „Zapisz profil
+                    na dysk” u dołu ekranu. Jeżeli profil o podanej nazwie już istnieje, pojawi się okienko
+                    z pytaniem czy chcemy napisać istniejące dane (poprzednio zapisane parametry dla danego profilu
+                    zostaną utracone i zastąpione nowymi), zmienić nazwę i zapisać dane pod nowa nazwą; możemy również
+                    zrezygnować z zapisu parametrów.
+                </p>
+                <img class="foto" src="img/dn_i7.png">
+                <p>Zapisane na dysku zestawy parametrów możemy odczytać klikając przycisk „Wczytaj profil
+                    z dysku”. Po kliknięciu pojawi się lista zapisanych wcześniej profili. Wybór profilu powoduje
+                    wyświetlenie okna z wartościami parametrów pytaniem czy na pewno chcemy załadować wybrany profil do
+                    sterownika PLC.
+                </p>
+                <img class="foto" src="img/dn_i8.png">
+                <p> Rezygnacja na tym etapie nie powoduje jeszcze żadnej zmiany w sterowniku. Akceptacja profilu
+                    skutkuje wpisaniem nowych wartości do sterownika – automatyka rejonu będzie działać według nowych
+                    parametrów.
+                    Przycisk „Skasuj profil z dysku” służy do usuwania zbędnych zestawów parametrów dysku. Po wybraniu
+                    zestawu, który chcemy usunąć pojawi się okienko z prośbą o potwierdzenie – zabezpiecza to przed
+                    przypadkowym skasowaniem profilu przez operatora.
+                </p>
+                <img class="foto" src="img/dn_i9.png">
+                <p><b>Ostatnie okienko „Diagnostyka”</b> wyświetla w formie tabelki wartości referencji dla poszczególnych
+                    napędów, jak również odpowiedzi (tacho, impulsator) i stan fotokomórek rejonu.</p>
+                    <img class="foto" src="img/dn_i10.png"
+            </ol>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+
+</html>

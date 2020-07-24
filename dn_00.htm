@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>DuoNawrotna</span></div><br>
+            <div id="linkiRejonu">
+                <a href="dn_00.htm" class="menuitem mFocus">Rejon</a>
+                <a href="dn_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="dn_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="dn_03.htm" class="menuitem">Instrukcja obsługi ST1.1</a>
+                <a href="dn_04.htm" class="menuitem">Czujniki</a>
+				<a href="dn_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-05-13</div>
+            <img id="lupa" src="img/dn_full.gif" alt="DuoNawrotna">
+            <a href="dn_ful.htm" class="menuitem" target="_blank">Powiększ</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+<script>
+    /* w e.offsetX/Y mamy położenie myszy względem obrazka, a offsetWidth/Height
+   to rozmiary naszego "pomniejszenia",  przesunięcie to po prostu proporcja*/
+    document.getElementById("lupa").addEventListener("mousemove", function (e) {
+        this.style.objectPosition =
+            (e.offsetX / this.offsetWidth) * 100 + "% " +
+            (e.offsetY / this.offsetHeight) * 100 + "%";
+    });
+</script>
+
+</html>
