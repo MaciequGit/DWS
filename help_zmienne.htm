@@ -34,22 +34,84 @@
             <div id="mac">Mac aktualizacja:2020-07-21</div>
             <h1>Jak szukać zmiennych w programie PLC</h1>
             <p>
-                Zacznijmy od początku. Przeszedłeś tu ze strony z dokumentacjami. Wszystkie są w PDF. Powyżej były podane linki do dwóch katalogów i pliku w którym zsumowano wszystko z wydruku progamu PLC. Można z tego skorzystać bezpośrednio w przeglądarce lub z wykorzystaniem osobnego programu do plików PDF (użycie Adobe&nbspReader, Foxit&nbspReader itp daje większe możliwości).
+                Zacznijmy od początku. Przeszedłeś tu ze strony z dokumentacjami. Wszystkie są w PDF. Powyżej były
+                podane linki do dwóch katalogów i pliku w którym zsumowano wszystko z wydruku progamu PLC. Można z tego
+                skorzystać bezpośrednio w przeglądarce lub z wykorzystaniem osobnego programu do plików PDF (użycie
+                Adobe&nbspReader, Foxit&nbspReader itp daje większe możliwości).
             </p>
             <h2>Użycie przeglądarki</h2>
             <p>
-                Po wybraniu katalogu widzimy listę wszystkich plików które w nim są: 
-                <img class="foto" src="img/help01.png"> 
-                Klikamy wybrany plik(.pdf) by go obejrzeć.
-                <img class="foto" src="img/help02.png"> 
-                Plik otwiera się w przeglądarce. Podobnie otworzy się link do pliku typu "0PLC2_Suma" tyle,że bez potrzeby wchodzenia do katalogu.	
+                Po wybraniu katalogu widzimy listę wszystkich plików które w nim są:
+                <img class="foto" src="img/help01.png">
+            <p> Klikamy wybrany plik(.pdf) by go obejrzeć.</p>
+            <img class="foto" src="img/help02.png">
+            <p>
+                Plik otwiera się w przeglądarce. Podobnie otworzy się link do pliku typu "0PLC2_Suma" tyle,że bez
+                potrzeby wchodzenia do katalogu. Można przeglądać cały dokument, ale interesuje nas gdzie wykorzystujemy
+                jakieś wejście, albo jak sterujemy wyjściem. </p>
+            <h3>
+                Załóżmy, że coś nie tak jest ze sterowaniem popychacza do
+                przodu na piecu 1.:
+            </h3>
+            <ul>
+                <li>
+                    Wybieram rejon Piec1, stronę "Program i dokumentacja PLC". W sekcji:"Schematy elektryczne PLC"
+                    klikam link D:\_Schematy_PLC\0PLC1_Piec1. Następnie wybieram plik z wyjściami 0PLC1Slave3_Q1.pdf.
+                    Zgodnie ze schematem jest to wyjście Q122
+                    <img class="foto" src="img/help03.png">
+                </li>
+                <li>
+                    Zamykam kartę przeglądarki i otwieram link "0PLC1_Suma". Ten plik zawiera opis zmiennych,
+                    ross-reference czyli spis w którym dla każdej zmiennej są wyszczególnione wszystkie miejsca w
+                    programie gdzie zmiennna jest używana oraz wszystkie bloki LD i ST.
+                </li>
+                <li>
+                    Nie można wpisać Q122, gdyż wydruk zawiera zera nieznaczące i wyszukiwarka nic nie znajdzie. Dlatego
+                    w pierwszym etapie proponuję wybrać "znajdź" (CTRL+F) i wpisać tylko "122". Znalezionych miejsc jest
+                    tylko 7, więc można zwiedzić wszystkie.
+                    <img class="foto" src="img/help04.png">
+
+                </li>
+                <li>
+                    Załóżmy, że było by ich dużo więcej. Przechodzę, jak na rysunku do wyjścia Q122 (bo wstępnie
+                    znajdujemy również I122, M122, AI122 i.t.p.). Zaznaczam "SterPoPrz" - to nazwa zmiennej Q122.
+                    Kopiuję do schowka i wklejam w wyszukiwarce:
+                    <img class="foto" src="img/help05.png">
+                </li>
+                <li>
+                    Teraz znajduje tylko wystąpienia zmiennej o adresie Q122 i w drugim wystąpieniu mamy interesujący
+                    nas rung.
+                </li>
+                <h3>
+                    <x>
+                        Sprawdzenie zmiennych
+                    </x>
+                </h3>
+                <li>
+                    Wracamy do wizualizacji nastawni. Otwieram stronę "Zmienne" i wpisuję interesujące zmienne (w pola
+                    VarDis1 do VarDis8):
+                    <img class="foto" src="img/help06.png">
+                </li>
+                <li>
+                    Jak widać na powyższym rysunku brakuje sygnału I310 (Przód popychacza).
+                </li>
+            </ul>
+            <h2>Użycie AdobeReader, Foxit Reader lub innych przeglądarek PDF'ów</h2>
+            <p>
+                Te narzędzia pozwalają na lepsze ustawienie widoku pliku: powiększenie, podgląd całej strony lub dwóch
+                stron na ekranie. Na początku na stronie "Program i dokumentacja PLC" klikamy na linku prawym
+                przyciskiem myszy i wybieramy "Kopiuj adres linku". Klikamy znaczek windows i miejsce:
+                <img class="foto" src="img/help07.png">
+                wklejamy skopiowany adres. To pozwala otworzyć katalog z plikami. Podobnie możemy posługiwać się Total
+                Commanderem by otworzyć katalog z dokumentacjami. Teraz plik PDF otwiera się n.p. w Foxit Reader.
             </p>
-            <table>
-                <tr>
-                    <td>2020-07-23</td>
-                    <td>Zakończono załadunek, piec1, piec2 i DN</td>
-                </tr>
-            </table>
+            <p>
+                Wyszukiwanie jest podobne jak w przeglądarce internetowej, ale można skorzystać z opcji wyszukiwania
+                (SHIFT+CTRL+F) by wyświetlić całą listę miejsc wystąpienia zmiennej:
+                <img class="foto" src="img/help08.png">
+                Tu można myszą wybrać interesujące nas miejsce (wybrałbym "COIL Ster......" by przejść do miejsca
+                ustawiania zmiennej:)
+            </p>
             <hr>
         </div>
         <div style="clear: both;"></div>
