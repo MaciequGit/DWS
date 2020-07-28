@@ -1,0 +1,33 @@
+git init 
+git status
+git add index.htm    lub    git add .  (wszystko)
+git reset                               cofa git add
+dodaj plik .gitignore i w nim wpisz nazwy plików których nie chcesz commitować
+git add .gitignore  i wpisane pliki nie są Gitowane
+
+*** Jednorazowo: (bez --global przy każdym repozytorium)
+    git config --global user.email"maciequ@wp.pl"
+    git config --global user.name 'Mac'
+git commit -m 'Początek  GITa są gotowe rejony Załadunek Piec1 Piec2 DN'
+
+*** Dodanie do gitHuba
+    git remote add origin https://github.com/MaciequGit/DWS.git
+    git push -u origin master
+
+git fetch                   odczyt zdalnego (utworzy nowe gałęzie jeśli są na zdalnym)
+git pull origin master      odczyt ze zdalnego
+git log                     wyświetla historię commitów
+
+*** Klonowanie repozytorium. Utwórz nowy katalog dla repozytorium i w nim:
+git clone https://github.com/MaciequGit/DWS.git <nowykatalog- opcjonalnie>
+git branch nowagalaz                utwórz gałąź
+git checkout nowagalaz              przejście na nową gałąź
+git checkout -b nowagalaz           utworzenie i przejście na nową gałąź
+
+(master) git merge nowagalaz        łączy nową gałąź z masterem
+git branch -d nowagalaz             usuń gałąź
+git branch                          lista gałęzi
+
+*** Zmiana komentarza
+git commit -m 'dodałem coś'
+git commit --amend -m 'dodałem nową funkcję do JS'  poprawiam komentarz
