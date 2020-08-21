@@ -13,6 +13,8 @@ git commit -m 'Początek  GITa są gotowe rejony Załadunek Piec1 Piec2 DN'
 *** Dodanie do gitHuba
     git remote add origin https://github.com/MaciequGit/DWS.git
     git push -u origin master
+    git push origin :<branchName>               usuwa gałąź ze zdalnego repozytorium
+    git push origin --delete <branchName>       usuwa gałąź ze zdalnego repozytorium (to samo)
 
 git fetch                   odczyt zdalnego (utworzy nowe gałęzie jeśli są na zdalnym)
 git pull origin master      odczyt ze zdalnego
