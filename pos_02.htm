@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>Klatki pośrednie</span></div><br>
+            <div id="linkiRejonu">
+                <a href="pos_00.htm" class="menuitem">Rejon</a>
+                <a href="pos_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="pos_02.htm" class="menuitem mFocus">Tryby pracy</a>
+                <a href="pos_03.htm" class="menuitem">Instrukcja obsługi ST0.3</a>
+                <a href="pos_04.htm" class="menuitem">Czujniki</a>
+                <a href="pos_05.htm" class="menuitem">Obsługa URE</a>
+                <a href="pos_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-08-31</div>
+            <a id="L0"></a>
+            <h1>TRYBY PRACY</h1>
+            <ul class="instrukcjaspis">
+                <li><a href="#L1">Sterowanie rejonem klatek pośrednich (rejon 2)</a></li>
+                <li><a href="#L2">Nożyca wahadłowa</a></li>
+                <li><a href="#L3">Samotoki rejonu pieca</a></li>
+            </ul>
+            <br><a id="L1"></a>
+            <hr>
+            <h1>Sterowanie rejonem klatek pośrednich (rejon 2)<a href="#L0"><img style="float:right;"
+                        src="img/return.png"></a></h1>
+            <p>Oryginalnie sterowanie wszystkich napędów było wykonywane z mostka ST2.1. W 2011 roku został uruchomiony
+                sterownik 3PLC3 którego zadaniem było umożliwienie walcowania bez obsady mostka ST2.1. Dotyczyło to
+                wszystkich profili niewymagających kantowania przed II pośrednią. Po modernizacji kantownika 2.19
+                sytuacja jest odwrotna - można sterować kantownikiem tylko z mostka ST3.1(lub pulpitu lokalnego). </p>
+            <table>
+                <tr>
+                    <th>Z mostka ST2.1</th>
+                    <th>Z mostka ST3.1</th>
+                </tr>
+                <tr style="text-align: justify; vertical-align: top">
+                    <td style="width: 40%">
+                        <p>
+                            Jest to mostek nie modernizowany. W tym trybie Operator steruje klatkami pośrednimi,
+                            samotokami 2.02 2.18 i 2.28 oraz wyrzutnikiem przed nożycą wahadłową ze starego osprzętu.
+                            Aktualnie nie można stąd sterować kantownikiem 2.19. Jest to możliwe tylko z ST3.1 lub
+                            pulpitu lokalnego.
+                        </p>
+
+                    </td>
+                    <td>
+                        <p>
+                            Przy modernizacji z 2011r. na mostku ST3.1 zabudowano dodatkowy pulpit ST3.1K z osprzętem do
+                            sterowania samotokami oraz zbiciami awaryjnymi P1, P2, oraz piwnicy PH-6. Wizualizacja
+                            również została rozbudowana o stronę sterowania i diagnostyki rejonu 2. Na tej stronie
+                            Operator dokonuje wyboru miejsca sterowania. Po przejęciu sterowania osprzęt z ST2.1
+                            "przestaje działać" (wyjątkiem są wyłączniki awaryjne - w każdej chwili można zbić rejon z
+                            ST2.1), a sterowanie odbywa się z mostka ST3.1 (z osprzętu na ST3.1K lub z przycisków
+                            wizualizacji). </p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p>
+                            Przekazanie sterowania może się odbywać na ruchu (przy załączonych klatkach pośrednich i
+                            samotokach). Nie wybije to klatek, ani nie zmieni aktualnego sterowania samotoków.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+            <br><a id="L2">
+                <hr>
+                <h1>
+            </a>Nożyca wahadłowa<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+            <p>
+                Kolejna modernizacja rejonu pozwoliła zastąpić Operatora z "gruszką" w dłoni obcinającego początek z
+                każdego pasma sterowaniem PLC.
+            </p>
+            <table>
+                <tr>
+                    <th>Tryb RĘCZNY</th>
+                    <th>Tryb AUTO</th>
+                </tr>
+                <tr style="text-align: justify; vertical-align: top">
+                    <td style="width: 40%">
+                        W tym trybie samotok 2.28 jest sterowany ręcznie z ST2.1, ST3.1 lub gruszki. Nożyca jest także
+                        sterowana ręcznie z ST3.1 lub gruszki.
+
+                    </td>
+                    <td>
+                        Tryb ten samoczynnie odcina początek z każdego pasma na nożycy 3.02. Na podstawie sygnałów z
+                        dwóch fotokomórek, zabudowanych przed nożycą, układ zwalnia prędkość samotoku 2.28 około 3 metry przed
+                        3.02 i zatrzymuje się z pasmem pod nożami. W trybie półAUTO Operator musi potwierdzić pozycję
+                        pasma. Nożyca odcina początek (długość Operator ustawia na stacji operatorskiej
+                        SOST3.1).Następnie nożyca cofa się ok 1m by oderwać ewentualnie nie docięty kawałek i rusza do
+                        przodu wprowadzając pasmo do ciągu. Jest możliwe wyłączenie fazy cofnięcia z ST3.1. W trybie
+                        AUTO nie potwierdza, tylko kontroluje pozycję pasma. W każdym wypadku jeśli pasmo nie ustawi się
+                        prawidłowo Operator może joystickiem poprawić jego pozycję. Po wprowadzeniu całego pasma w ciąg,
+                        układ czeka na kolejnego kęsa.
+                    </td>
+                </tr>
+            </table>
+            <br><a id="L3"></a>
+            <hr>
+            <h1>Samotoki rejonu załadunku pieca:<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+            <table>
+                <tr>
+                    <th>Tryb RĘCZNY</th>
+                    <th>Tryb AUTO</th>
+                </tr>
+                <tr style="text-align: justify; vertical-align: top">
+                    <td style="width: 40%">
+                        &nbsp&nbsp&nbspSamotok 0.05s3 jest sterowany ręcznie z mostka ST0.3 (po oddaniu sterowania może
+                        być sterowany z ST0.1). Samotok 0.07 jest sterowany ręcznie z mostka ST0.3 (po oddaniu
+                        sterowania może być sterowany z ST0.1, ale tylko do tyłu). Samotok 0.10 jest sterowany ręcznie z
+                        mostka ST0.3.
+
+                    </td>
+                    <td>
+                        &nbsp&nbsp&nbspW pierwszej kolejności układ doprowadza kęsa do czujnik B02. W tym celu samotok
+                        0.05s1 (a przy wybranym ruszcie I także 0.02) zostaje uruchomiony do jazdy w przód. Przy
+                        wybraniu PółAUTO powyższe dociąganie nie działa, trzeba samotokami rusztów sterować ręcznie. Gdy
+                        kęs znajduje się na czujniku B02 rozpoczyna się cykl ważenia. Przy pustej wadze są uruchamiane
+                        samotoki 0.05s3 i 0.07. Kęs wjeżdża na wagę (0.07 kręci się szybciej by rozdzielić ewentualnie
+                        złączone kęsy). Gdy kęs znajdzie się całkowicie na wadze, jest zatrzymany, „uspokojony” i
+                        ważony. Zważony kęs zjeżdża na 0.10 i jest zatrzymywany na czujniku B013. Tam czeka na
+                        wprowadzenie w rejon pieca. Gdy waga (czyli 0.07) jest pusta następuje tarowanie układu
+                        pomiarowego i cykl się powtarza.
+                        <br>&nbsp&nbsp&nbspWybicie tego trybu może nastąpić gdy sztuka nie mieści się na wadze (mogą to
+                        być dwa złączone kęsy). Dlatego nie należy ręcznie wpychać tzw. „pociągu” samotokami rusztów.
+                        <br>&nbsp&nbsp&nbspUkład sumuje wagę wytopu i wyświetla dane na ST0.3. Liczone są również kęsy w
+                        wytopie. Po zważeniu ostatniego kęsa jest wyświetlany odpowiedni alert i układ czeka na dane
+                        nowego wytopu. Do czasu ich wpisania kolejny kęs czeka przed wagą (na czujniku B03).
+                        <br>&nbsp&nbsp&nbspMigający napis AUTO oznacza iż przełącznik jest w pozycji AUTO lub PółAUTO,
+                        ale układ pracuje ręcznie do czasu opróżnienia wagi. Wówczas nastąpi samoczynne załączenie trybu
+                        (napis przestanie migać).
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

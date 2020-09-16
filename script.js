@@ -28,6 +28,7 @@ function rejony() {
 	text = text + '<a href="piec1_01.htm" class="menuitem">Piec 1</a>';
 	text = text + '<a href="piec2_01.htm" class="menuitem">Piec 2</a>';
 	text = text + '<a href="dn_01.htm" class="menuitem">DN</a>';
+	text = text + '<a href="pos_01.htm" class="menuitem">Pośrednie</a>';
 	document.getElementById("rejon").innerHTML = text;
 	document.getElementById("linkiRejonu").innerHTML = "";
 	rejExp = true;
