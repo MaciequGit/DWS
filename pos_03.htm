@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>Klatki pośrednie</span></div><br>
+            <div id="linkiRejonu">
+                <a href="pos_00.htm" class="menuitem">Rejon</a>
+                <a href="pos_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="pos_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="pos_03.htm" class="menuitem mFocus">Instrukcja obsługi ST3.1</a>
+                <a href="pos_04.htm" class="menuitem">Czujniki</a>
+                <a href="pos_05.htm" class="menuitem">Obsługa URE</a>
+                <a href="pos_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-08-31</div>
+            <a id="L0"></a>
+            <h1>INSTRUKCJE <br>MOSTEK ST3.1</h1><br>
+            <ul class="instrukcjaspis">
+
+                <li><a href="#L1">Instrukcja obsługi urządzeń rejonu klatek pośrednich z mostka ST3.1 </a>
+                </li><br>
+                <li> <a href="#L2">Opis sterowania napędów nożycy wahadłowej 3.02 oraz samotoków za klatką II pośrednią
+                        2.28 </a>
+                </li><br>
+
+                <li><a href="#L3">Opis sterowania napędów kantownika przed II pośrednią (2.19) </a></li>
+            </ul>
+            <br><a id="L1"></a>
+            <hr>
+            <h1>Instrukcja obsługi urządzeń rejonu klatek pośrednich z mostka ST3.1<a href="#L0"><img
+                        style="float:right;" src="img/return.png"></a></h1>
+            <p>
+                W związku z realizacją projektu TOP możliwe jest sterowanie następującymi urządzeniami rejonu 2 z mostka
+                ST3.1:
+            <ul>
+                <li>Klatka pośrednia I 2.10</li>
+                <li>Klatka pośrednia II 2.20</li>
+                <li>Samotoki przed I pośrednią 2.02</li>
+                <li>Samotoki za I pośrednią 2.18</li>
+                <li>Samotoki za II pośrednią 2.28</li>
+                <li> Wyrzutnik za II pośrednią</li>
+            </ul>
+            </p>
+            <p>
+                Do obsługi urządzeń wykorzystywany jest pulpit ST3.1K oraz dodatkowy ekran na wizualizacji.
+                Zainstalowano też telewizję przemysłową, która przekazuje obraz z pięciu kluczowych miejsc rejonu klatek
+                pośrednich.
+            </p>
+            <p>
+                Na pulpicie ST3.1K znajdują się trzy wychyłowe przełączniki powrotne dwukierunkowe: J202, J218, J228
+                oraz wyłączniki awaryjne b210, b220, b230. Przełączniki służą do sterowania samotokami, odpowiednio:
+                2.02, 2.18, 2.28. Sposób sterowania jest analogiczny jak z mostka ST2.1. Wyłącznik b210 wyłącza
+                awaryjnie klatkę I pośrednią, b220 wyłącza awaryjnie klatkę II pośrednią, b230 wyłącza awaryjnie piwnicę
+                hydrauliczną PH-6. Pulpit ST3.1K jest aktywny po przejęciu sterowania rejonem 2 (patrz opis
+                wizualizacji).
+            </p>
+
+            <p>
+                Ekran sterujący rejonem 2 z poziomu wizualizacji uaktywnia się przyciskiem :
+                <img class="foto" src="img/pos_i1.png">
+            </p>
+            <p>
+                Z poziomu ekranu sterującego można:
+            </p>
+            <ul>
+                <li>Dokonywać wyboru miejsca sterowania rejonem klatek pośrednich(ST3.1 - przycisk „PRZEJMIJ STEROWANIE”
+                    lub ST2.1 – przycisk „ODDAJ STEROWANIE”). Aktualne miejsce sterowania jest wyświetlane powyżej.
+                    UWAGA! Nie można przejąć sterowania gdy na pulpicie ST3.1K jest zbity którykolwiek z wyłączników
+                    awaryjnych : b210, b220, b230.</li>
+                <li>Załączać / wyłączać klatki pośrednie 2.10 i 2.20 , zazbrajać wyłączniki awaryjne klatek. Panel
+                    przedstawia również gotowość do załączenia, sygnalizację awarii, sygnalizację wyłączenia awaryjnego
+                    oraz
+                    prąd rzeczywisty klatek pośrednich.</li>
+                <li>Sterować samotokami 2.02, 2.18, 2.28 podobnie jak z pulpitu ST3.1K. Strzałka w kolorze zielonym
+                    wskazuje kierunek jazdy samotoków.</li>
+                <li>Sterować wyrzutnikiem przed nożycą wahadłową 3.02. Strzałka w górę podnosi wyrzutnik, w dół opuszcza
+                    ramię wyrzutnika.</li>
+                <li>Ekran sygnalizuje także stan wyłącznika awaryjnego piwnicy hydraulicznej PH-6.</li>
+            </ul>
+            <p>
+                Widok ekranu sterującego rejonem 2:
+                <img class="foto" src="img/pos_i2.png">
+            </p>
+            <p>
+                Po przejęciu sterowania na ST3.1 na pasku daty i zegara wyświetlana jest uproszczona sygnalizacja stanu
+                urządzeń rejonu klatek pośrednich. Pozwala to na bieżącą informację gdy Operator korzysta z innych
+                ekranów wizualizacji. Widok paska zegara przy sterowaniu z mostka ST3.1:
+                <img class="foto" src="img/pos_i3.png">
+            </p>
+
+
+            <br><a id="L2">
+                <hr>
+                <h1>Opis sterowania napędów nożycy wahadłowej 3.02 oraz samotoków za klatką II pośrednią
+                    2.28<a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+                <p>
+                    Napędy 3.02 i 2.28 mogą pracować w trzech trybach : ręcznym, półautomatycznym i automatycznym.
+                    Wyboru
+                    trybu pracy dokonuje operator przełącznikiem b201 umieszczonym na pulpicie ST3.1D
+                </p>
+                <ol>
+                    <li>
+                        PRACA W TRYBIE RĘCZNYM
+                        <p>
+                            Jest to praca analogiczna do działania tych urządzeń przed zmianą sterowania. Samotok 2.28
+                            jest
+                            sterowany z mostka ST2.1, ST3.1 lub skrzynki sterowania miejscowego 3.40 z wykorzystaniem
+                            przycisków (lub manipulatora):
+                        <ul>
+                            <li>jazda w przód</li>
+                            <li>jazda w tył.</li>
+                        </ul>
+                        </p>
+                        <p>
+                            Układ zapamiętuje stan urządzenia po chwilowym wciśnięciu przycisku i działa w następującej
+                            sekwencji:
+                        </p>
+                        Stan początkowy - Samotok zatrzymany
+                        <br>Przycisk – Jazda przód => Samotok jedzie do przodu
+                        <br>Przycisk – Jazda tył => Zatrzymanie samotoku
+                        <br>Przycisk – Jazda tył => Samotok jedzie do tyłu
+                        <br>Przycisk – Jazda przód => zatrzymanie samotoku
+                        <p>
+                            Nożyca wahadłowa 3.02 może być sterowana z mostka ST3.1 lub skrzynki sterowania miejscowego
+                            3.40. Możliwe jest cięcie normalne z przycisku b204 (noże po cięciu pozostają otwarte) lub
+                            cięcie awaryjne z przycisku b205 (noże po cięciu pozostają zamknięte). Ze skrzynki
+                            sterowania
+                            miejscowego 3.40 możliwe jest tylko cięcie normalne. Urządzenia posiadają wzajemną blokadę:
+                        <ul>
+                            <li>
+                                niemożliwe jest cięcie normalne nożycy podczas pracy samotoku
+                            </li>
+                            <li>
+                                cięcie awaryjne nożycy zatrzymuje samotok (niemożliwe jest załączenie samotoku do czasu
+                                otwarcia noży).
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        PRACA W TRYBIE PÓŁAUTOMATYCZNYM
+                        <p>
+                            Tryb półautomatyczny pozwala na odcięcie zadanego odcinka z początku pasma bez udziału
+                            operatora
+                            przy skrzynce sterowania miejscowego. Długość odcinka należy wpisać na ekranie stacji
+                            operatorskiej (pozycja obok długości końca dla 3.68). Po wybraniu tego trybu pracy układ
+                            samoczynnie doprowadza i zatrzymuje pasmo w nożycy wahadłowej .Następnie na podświetlanym
+                            przycisku b202 zapala się lampka gotowości cięcia. Operator na ST3.1 wykorzystując TV
+                            przemysłową sprawdza poprawność ustawienia pasma i naciska przycisk b202 (lub pedał b203).
+                            Nożyca odcina zadany odcinek i samotok zostaje uruchomiony wprowadzając pasmo do pierwszej
+                            klatki walcowniczej . Jeśli pozycja pasma nie jest prawidłowa Operator może ją skorygować
+                            manipulatorem J228. Na tym etapie manipulator nie działa z pamięcią i umożliwia dokładne
+                            pozycjonowanie czoła pasma ( na czas wychylenia manipulatora
+                            samotok 2.28 porusza się z referencjami 10% prędkości nominalnej). Trybu połautomatycznego
+                            nie
+                            należy włączać gdy czoło pasma znajduje się w rejonie fotokomórek Fz3.02.01 i Fz3.02.02
+                            (&lt10[m] od osi nożycy). Taki stan układ sygnalizuje pulsowaniem na podświetlanym przycisku
+                            b202. Powyższy stan (błąd) kasuje się przełączeniem urządzeń w tryb ręczny.
+                        </p>
+                    </li>
+                    <li>
+                        PRACA W TRYBIE AUTOMATYCZNYM
+                        <p>
+                            Tryb automatyczny pozwala na odcięcie zadanego odcinka z początku pasma bez udziału
+                            operatora
+                            przy skrzynce sterowania miejscowego. Długość odcinka należy wpisać na ekranie stacji
+                            operatorskiej (pozycja obok długości końca dla 3.68). Po wybraniu tego trybu pracy układ
+                            samoczynnie doprowadza i zatrzymuje pasmo w nożycy wahadłowej .Następnie na podświetlanym
+                            przycisku b202 zapala się lampka gotowości cięcia. Operator na ST3.1 wykorzystując TV
+                            przemysłową sprawdza poprawność ustawienia pasma, ale nie musi potwierdzać pozycji. Po 3
+                            sekundach nożyca odcina zadany odcinek i samotok zostaje uruchomiony wprowadzając pasmo do
+                            pierwszej klatki walcowniczej . Jeśli pozycja pasma nie jest prawidłowa Operator może ją
+                            skorygować manipulatorem J228. Na tym etapie manipulator nie działa z pamięcią i umożliwia
+                            dokładne pozycjonowanie czoła pasma ( na czas wychylenia manipulatora samotok 2.28 porusza
+                            się z
+                            referencjami 10% prędkości nominalnej).W przypadku korygowania pozycji cięcie nożycy
+                            następuje 3
+                            sekundy po korekcji. Trybu automatycznego nie należy włączać gdy czoło pasma znajduje się w
+                            rejonie fotokomórek Fz3.02.01 i Fz3.02.02 (&lt10[m] od osi nożycy). Taki stan układ
+                            sygnalizuje
+                            pulsowaniem na podświetlanym przycisku b202. Powyższy stan (błąd) kasuje się przełączeniem
+                            urządzeń w tryb ręczny.
+                        </p>
+                    </li>
+                    <li>
+                        PRIORYTET STEROWANIA
+                        <p>
+                            Pierwszeństwo ma zawsze sterowanie ręczne. Oznacza to, że cięcie awaryjne nożycy wahadłowej,
+                            wyłączenie awaryjne lub sterowanie ręczne samotokiem 2.28 (z mostka ST2.1, ST3.1 lub
+                            „gruszki”)
+                            w czasie pracy automatycznej nożycy wahadłowej powoduje wybicie automatyki i przejście w
+                            tryb
+                            ręczny. Taki stan układ sygnalizuje pulsowaniem na podświetlanym przycisku b202. Powyższy
+                            stan
+                            (błąd) kasuje się przełączeniem urządzeń w tryb ręczny.
+                        </p>
+                    </li>
+                    <li>
+                        WYŁĄCZENIE AWARYJNE URZĄDZEŃ
+                        <p>
+                            W wypadku zagrożenia napędy nożycy wahadłowej 3.02 oraz samotoku 2.28 należy zatrzymać
+                            wyłącznikiem awaryjnym b10. Oba napędy zostaną zatrzymane w trybie awaryjnym. Nie będzie
+                            można
+                            nimi sterować do czasu ponownego zazbrojenia wyłącznika awaryjnego przyciskiem b20.
+                        </p>
+                    </li>
+                    <li>
+                        BLOKADA PRZY DŁUGOTRWAŁYM CIĘCIU
+                        <p>
+                            Urządzenie zostanie zablokowane gdy wykona 5 cięć w czasie mniejszym od dwóch minut.
+                            Możliwość
+                            ponownego cięcia będzie po upływie pięciu minut.
+                        </p>
+                    </li>
+                </ol>
+                <br><a id="L3">
+                    <hr>
+                    <h1>Opis sterowania napędów kantownika przed II pośrednią (2.19) <a href="#L0"><img
+                                style="float:right;" src="img/return.png"></a></h1>
+
+                    <p>
+                        Napędy kantownika 2.19 mogą być sterowane lokalnie ręcznie oraz z mostka ST3.1 w trybie ręcznym
+                        i automatycznym.
+                    </p>
+                    <ol>
+                        <li>
+                            PRACA LOKALNA W TRYBIE RĘCZNYM
+                            <p>
+                                Jest to praca z lokalnego pulpitu znajdującego się przy kantowniku.
+                                Jest włączana po przekręceniu kluczyka w stacyjce. To miejsce ma najwyższy priorytet
+                                sterowania. Przyciski / przełączniki umożliwiają wybór kąta obrotu kantowania 45/90st
+                                oraz:
+
+                            <ul>
+                                <li>jazda w przód / jazda do tyłu</li>
+                                <li>zaciskanie / luzowanie</li>
+                                <li>obrót: kantowanie / powrót do pozycji 0</li>
+                            </ul>
+                            </p>
+                            <p>
+                                Odpowiednia sekwencja sterowania umożliwia lokalne kantowanie w razie ewentualnych
+                                problemów technologicznych lub z oczujnikowaniem . Na pulpicie znajduje się także
+                                wyłącznik awaryjny kantownika oraz samotoku 2.18 (przed II pośrednią) oraz przycisk
+                                awaryjnego chłodzenia materiału.
+                            </p>
+
+                        </li>
+                        <li>
+                            PRACA W TRYBIE RĘCZNYM NA MOSTKU ST3.1
+                            <p>
+                                Przy wyłączonej stacyjce na pulpicie lokalnym sterowanie kantownikiem odbywa się z
+                                mostka ST3.1. Na mostku zabudowano nowy osprzęt do obsługi kantownika. Znajduje się on
+                                po prawej stronie prawego pulpitu Operatora.
+                            </p>
+                            <img class="foto" src="img/pos_i4.png">
+                            <p>
+                                Sterowanie w trybie ręcznym z mostka ST3.1 jest analogiczne do sterowania z pulpitu
+                                lokalnego. Wyboru kąta kantowania należy dokonać na stacji operatorskiej. W celu lepszej
+                                obserwacji rejonu kantownika zabudowano nowe monitory / kamery. Wyłącznik awaryjny można
+                                zazbroić tylko na mostku ST3.1
+                            </p>
+                        </li>
+                        <li>
+                            PRACA W TRYBIE AUTOMATYCZNYM NA MOSTKU ST3.1
+                            <p>
+                                W celu możliwości pracy automatycznej kantownika na stacji operatorskiej SOST3.1 na
+                                ekranie rejonu klatek pośrednich dodano poniższe elementy sterujące:
+                                <img class="foto" src="img/pos_i5.png">
+                            </p>
+                            <p>
+                                Na ekranie jest przedstawiony stan rzeczywisty kantownika (tryb pracy wybrany i
+                                rzeczywisty, miejsce sterowania, stan wyłącznika awaryjnego i pozycja poszczególnych
+                                napędów kantownika. Należy dokonać wyboru kąta obrotu. Ustawić kantownik w pozycji tył,
+                                zluzowany, obrót 0st. Następnie wybrać tryb pracy AUTO.
+                            </p>
+
+                        </li>
+                    </ol>
+                    <hr>
+                    <h1><a href="#L0"><img style="float:right;" src="img/return.png"></a></h1>
+        </div>
+    </div>
+</body>
+
+</html>

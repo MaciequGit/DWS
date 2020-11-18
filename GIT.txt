@@ -8,7 +8,7 @@ git add .gitignore  i wpisane pliki nie są Gitowane
 *** Jednorazowo: (bez --global przy każdym repozytorium)
     git config --global user.email"maciequ@wp.pl"
     git config --global user.name 'Mac'
-git commit -m 'Początek  GITa są gotowe rejony Załadunek Piec1 Piec2 DN'
+git commit -m "Początek  GITa są gotowe rejony Załadunek Piec1 Piec2 DN"
 
 *** Dodanie do gitHuba
     git remote add origin https://github.com/MaciequGit/DWS.git
@@ -33,3 +33,10 @@ git branch                          lista gałęzi
 *** Zmiana komentarza
 git commit -m 'dodałem coś'
 git commit --amend -m 'dodałem nową funkcję do JS'  poprawiam komentarz
+=================================================================================
+
+shift + alt + T  - tłumaczenie textu
+shift + alt + F  - formatowanie i usuwanie spacji
+shift + alt + strzałka w D (G)  - duplikowanie wiersza pod (nad)
+alt + Z         - załamywanie wierszy (zał/wył)
+

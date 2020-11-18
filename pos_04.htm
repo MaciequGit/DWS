@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Pomoc DWS</title>
+    <meta name="description"
+        content="Strony z pomocą w diagnostyce urządzeń na Walcowni Średniej sterowanych poprzez sterowniki PLC" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="bodyOnload();">
+    <div id="container">
+        <div id="menuL">
+            <img style="width: 70%; padding: 10px;" src="img/ge.jpg" alt="FANUC">
+            <div id="zegar">12:00:00</div>
+            <div id="rejon"><span>Klatki pośrednie</span></div><br>
+            <div id="linkiRejonu">
+                <a href="pos_00.htm" class="menuitem">Rejon</a>
+                <a href="pos_01.htm" class="menuitem">Konfiguracja PLC</a>
+                <a href="pos_02.htm" class="menuitem">Tryby pracy</a>
+                <a href="pos_03.htm" class="menuitem">Instrukcja obsługi ST3.1</a>
+                <a href="pos_04.htm" class="menuitem mFocus">Czujniki</a>
+                <a href="pos_05.htm" class="menuitem">Obsługa URE</a>
+                <a href="pos_06.htm" class="menuitem">Program i dokumentacja PLC</a>
+            </div>
+        </div>
+        <div id="menuLpom"></div>
+        <div id="content">
+            <img style="width: 100%; margin-bottom: -10px" src="img/slaby.jpg" alt="Slaby">
+            <div id="mac">Mac aktualizacja:2020-05-13</div>
+            <a id="L0"></a></a>
+            <h1>CZUJNIKI</h1>
+            <br>
+            <ol class="instrukcjaspis">
+                <li><a href="#L1">Czujniki temperatury silników klatek pośrednich</a></li>
+                <li><a href="#L2">Fotokomórki</a>
+                <li><a href="#L3">Drogówki</a></li>
+            </ol>
+            <br>
+            <hr>
+            <ol class="instrukcjapkt">
+
+                <li><a id="L1"></a>Czujniki temperatury silników klatek pośrednich</a><a href="#L0"><img
+                            style="float:right;" src="img/return.png"></a></li>
+                <p>
+                    Dla każdej klatki dokonywany jest pomiar z 15 czujników SFAR CLA-PT-S1. Sygnały prądowe (4..20mA) są
+                    doprowadzone do
+                    slave'ów klatek 2.10 i 2.20. Czujniki są zasilane ze slave'a 2MT (znajduje się z tyłu szafy 2.20A)
+                </p>
+                <hr>
+                <li><a id="L2"></a>Fotokomórki</a><a href="#L0"><img style="float:right;" src="img/return.png"></a></li>
+                <p>
+                    W rejonie klatek pośrednich wykorzystujemy fotokomórki firmy delta. Fz3.02.01 i Fz3.02.02 to duże
+                    fotki typu DC 1020 A. Są niezbędne do automatyki obcinania czoła pasma. Za kantownikiem 2.19
+                    znajduje się nowsza i mniejsza fotka typu
+                    DC4530-LL wykorzystywana w cyklu automatycznym kantowania. Wszystkie są zasilane z szafy CEA napięciem 230VAC.
+                </p>
+
+
+                <hr>
+                <li><a id="L3"></a>Drogówki</a><a href="#L0"><img style="float:right;" src="img/return.png"></a></li>
+
+                <ul>
+                    <li>
+                        Na kantowniku 2.19 znajduje się drogówka E191 pozycji obrotu, czujniki hydrauliczne
+                        zaciśnięcia/luzowania oraz zbliżeniówki wskazujące pozycje krańcowe przód/tył
+                    </li>
+                    <li>
+                        Na nożycy wahadłowej jest wykorzystywana stara drogówka.
+                    </li>
+                </ul>
+            </ol>
+        </div>
+
+    </div>
+</body>
+
+</html>
