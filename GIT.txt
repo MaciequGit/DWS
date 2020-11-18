@@ -18,7 +18,7 @@ git commit -m "Początek  GITa są gotowe rejony Załadunek Piec1 Piec2 DN"
 
 git fetch                   odczyt zdalnego (utworzy nowe gałęzie jeśli są na zdalnym)
 git pull origin master      odczyt ze zdalnego
-git log                     wyświetla historię commitów
+git log                     wyświetla historię commitów    (q - wyjście z edytora)
 
 *** Klonowanie repozytorium. Utwórz nowy katalog dla repozytorium i w nim:
 git clone https://github.com/MaciequGit/DWS.git <nowykatalog- opcjonalnie>
